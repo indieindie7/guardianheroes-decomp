@@ -1,0 +1,2 @@
+0x06060000 func tre_Main hand Treasure logo screen: fade in, wait timer or START, fade out via 8-state loop, returns 1 if pressed
+0x060601bc func tre_TaskLogo hand Task copying logo graphics and palette, sets sprite fields centred at 0xa0,0x80 and animates it

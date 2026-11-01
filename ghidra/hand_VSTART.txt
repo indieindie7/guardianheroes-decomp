@@ -1,0 +1,62 @@
+0x06060000 func vstart_Main hand loads BG_TIT.BIN, loops state 0..5 over versus sub-screens, returns 1/2/-1/0 to kernel
+0x06060140 func vsmenu_RunRuleSelect hand provisional runner looping per-frame rule select state machine 060601da with abort check
+0x060601da func vsmenu_UpdateRuleSelect hand provisional state machine for seven-item versus rule menu, cursor 0..6, values 1..99, sprite creation
+0x0606092c func vschar_RunSelect hand loads KAO_DATA.BIN, copies face palettes, loops character select update 06060ae8
+0x06060ae8 func vschar_UpdateSelect hand state machine for six-player character selection, finishes by assigning team, stage, characters
+0x060612a4 func vschar_AssignTeamNumber hand provisional checks six slots for shared team, returns random or unused team number
+0x06061324 func vschar_PickRandomCharacter hand picks random character id for CPU slot avoiding duplicates among six slots, 45 entry table
+0x06061450 func vschar_InitCursorSprites hand allocates sprite objects for six player cursors and portrait panels
+0x06061708 func vschar_ValidateStartConditions hand counts active players, same-team check, cost limit check, returns 0..3
+0x06061810 func vschar_SumCharacterCost hand sums per-player character cost over six slots with duplicate handling
+0x06061b68 func vschar_IsSlotFree hand provisional checks no other cursor slot conflicts with given slot, returns 1 or 0
+0x06061bd4 func vschar_UpdatePlayerCursor hand per-player cursor state machine, left right fields, up down character id plus minus 8
+0x060620a0 func vschar_IsCharacterUnlocked hand character id selectable check, 0x2f random true, above 0x2c false, unlock flag test
+0x06062768 func vschar_DrawTypeField hand draws player type field human cpu off text with highlight when cursor on field
+0x06062812 func vschar_DrawTypeFieldFramed hand variant of type field draw, box drawn afterwards plus frame call
+0x060628e0 func vschar_DrawCharacterNameField hand draws character name and portrait, random id 0x2f, copies face palette 0x10 bytes
+0x06062a90 func vschar_DrawCharacterGrid hand draws 45 character grid in rows, grays locked ones, selection highlight
+0x06062dc4 func vschar_DrawColorField hand draws numeric color field with number text, question mark for random
+0x06062f28 func vschar_DrawStringTableField hand draws field text indexed from string table
+0x06062fc0 func vschar_DrawNumberFieldPlain hand numeric field draw variant without highlight
+0x060630b2 func vschar_DrawLetterFieldHighlight hand draws letter A..F field, question mark for random, with highlight
+0x06063190 func vschar_DrawLetterFieldFramed hand letter field draw without highlight conditional, with frame
+0x06063268 func vsopt_RunMenu hand provisional runner for option screen taking char param, loops update 0606339c
+0x0606339c func vsopt_UpdateMenu hand provisional state machine six item menu, cursor 0..5, confirm toggles 0 or 1
+0x06063d70 func vsstat_GetRemainingPoints hand pool at +0xe minus six stat allocations at +0x15..+0x1a
+0x06064154 func vsstat_DrawStatBars hand draws stat gauge bars from tile segments for six stats
+0x060642d2 func vsstat_AutoAllocateRandom hand resets player stats, randomly distributes points over six stats, clamps
+0x06064330 func vsstat_AllocateRandomSplit hand sequential random allocation of point pool among six stats
+0x06064472 func vsstat_ResetPlayerChecked hand resets player stat struct, returns 0x1a or -1 by check
+0x06064480 func vsstat_ResetPlayer hand resets player stat struct without check
+0x06064538 func vsstat_ClampStats hand clamps each stat so base plus bonus plus allocation is at most 0x20
+0x06064600 func vsstat_InitSlot hand initializes slot stats according to slot mode 0, 1 or 2
+0x06064668 func vsstat_InitAllPlayers hand initializes six slots by mode and copies 0x24 byte stat structs
+0x06064738 func vsstage_Run hand provisional runner looping stage or rule select update 060647dc
+0x060647dc func vsstage_UpdateSelect hand provisional nine-item menu state machine, cursor 0..8, skips disabled entries
+0x06064b64 func vsconfig_Run hand provisional runner looping config menu update 06064c0e
+0x06064c0e func vsconfig_UpdateMenu hand provisional nine-entry menu cursor 0..8, item 8 exits
+0x060652ac func vsmenu_MainLoop hand top loop alternating main menu runner and function pointers, returns -1 or 0
+0x06065310 func vsmenu_RunMain hand runner for main versus menu update 060653f0
+0x060653f0 func vsmenu_UpdateMain hand main versus menu, five items cursor 0..4, items 2 and 3 reset records
+0x0606595c func vsrecord_ClearCharacterRecords hand zeroes 45 character records of 24 bytes each
+0x06065990 func vsrecord_ClearPlayerRecords hand zeroes 16 player records of 16 bytes each
+0x06065bd4 func vsscreen_Run hand provisional runner for simple screen with fade and wait for button
+0x06065c6c func vsscreen_UpdateWaitButton hand provisional state machine fade in, wait for button, fade out
+0x06065f20 func vsrank_BuildCharacterText hand builds UTF-16 ranking text for 45 characters sorted by record, Character header
+0x06066120 func vsrank_ComputeCharacterStats hand clamps record values and computes win rate for 45 characters
+0x06066328 func vsrank_SortCharacters hand bubble sort of 45 character indices by record
+0x06066414 func vsscreen_Run_2 hand provisional second runner for wait-for-button screen
+0x060664ac func vsscreen_UpdateWaitButton_2 hand provisional second state machine for wait-for-button screen
+0x06066760 func vsrank_BuildPlayerText hand builds UTF-16 ranking text for 16 player records, Player header
+0x06066988 func vsrank_ComputePlayerStats hand clamps record values and computes win rate for 16 players
+0x06066b28 func vsrank_SortPlayers hand sorts 16 player indices by record
+0x06066c0c func vsrank_RunScreen hand runner with char param calling ranking screen update 06066cb0
+0x06066cb0 func vsrank_UpdateScreen hand state machine, calls sprite init, waits until object state reaches 5
+0x06066dd0 func vsrank_InitSprites hand allocates ranking screen sprites and rows of 0x3c objects
+0x06067748 func vschar_IsCharacterTakenByOther hand returns 1 if another active slot holds given character id, else 0
+0x06068210 func vsdemo_RunPages hand provisional loops page screen result, shows GUARDIAN text and page table entries until abort
+0x06068292 func vsdemo_RunMenu hand provisional runner: init, fade, loop menu update 0606832a with abort check
+0x0606832a func vsdemo_UpdateMenu hand provisional state machine allocating sprites, async file load, three-item cursor menu
+0x060687d4 func vschar_RunViewer hand provisional runner loads KAO_DATA.BIN, sets face tables, loops viewer update 06068918
+0x06068918 func vschar_UpdateViewer hand provisional state machine browsing character ids 0..0x2f with left right plus minus 1, up down 8
+0x06069090 func vsscreen_RunFade hand provisional runner with param, sprite alloc, fade in and out, waits button, returns -1 on abort

@@ -1,0 +1,73 @@
+0x06098000 func stg_InitStageLoad hand loads stage CHR and VDP map files, sets palettes and installs stage handlers
+0x060995b4 func stg_SetObjTimerPair hand provisional: stores constant timer values into object fields
+0x060995c2 func chr_CharEStartState17_02 hand clears attack and velocity, sets state byte 0x17
+0x060995f4 func chr_CharEStartState18_03 hand clears attack and velocity, sets state byte 0x18
+0x06099626 func chr_CharEStartAct1c_04 hand clears attack and velocity, sets action state
+0x06099652 func chr_CharEStartState34_05 hand clears attack and velocity, sets state byte 0x34
+0x0609967e func chr_CharEStartAct22_06 hand clears attack and velocity, sets action state
+0x060996a0 func chr_CharEStartMove_07 hand clears attack and velocity, sets action state
+0x06099720 func chr_CharEStartMove_08 hand clears attack and velocity, sets action state
+0x06099770 func chr_CharEStartMove_09 hand clears attack and velocity, sets action state
+0x060997c0 func chr_CharEStartMove_10 hand clears attack and velocity, sets action state
+0x06099810 func chr_CharEStartAct23_11 hand clears attack and velocity, sets action state
+0x0609986c func chr_CharEStartAct28_12 hand clears attack and velocity, sets action state with scaled damage
+0x060998a8 func chr_CharEUpdateSpecialAttack_13 hand provisional: large special attack updater spawning effects and hit logic
+0x06099bac func chr_CharEUpdateMoveState_14 hand moves along x by speed, returns to idle state on finish
+0x06099db8 func chr_CharEUpdateMoveState_15 hand moves along x by speed, returns to idle state on finish
+0x0609a05c func chr_CharEUpdateSpecialAttack_16 hand provisional: large special attack updater spawning effects and hit logic
+0x0609a36e func chr_CharEUpdateMoveState_17 hand moves along x by speed, returns to idle state on finish
+0x0609a4dc func chr_CharEUpdateSpecialAttack_18 hand provisional: large special attack updater spawning effects and hit logic
+0x0609a7dc func chr_CharEUpdateSpecialAttack_19 hand provisional: large special attack updater spawning effects and hit logic
+0x0609ad18 func chr_CharEInitComboInput_20 hand advances combo step and registers sound banks
+0x0609ad3a func chr_CharEUpdateMoveState_21 hand moves along x by speed, returns to idle state on finish
+0x0609ae48 func chr_CharEUpdateAttackState_22 hand selects attack state table entry by combo input
+0x0609afa8 func chr_CharEDispatchStateHandlers_23 hand selects among state handler functions by state
+0x0609b01c func chr_CharEDispatchProjectileMove_24 hand selects handler then dispatches projectile move by type
+0x0609b0a6 func chr_CharEDispatchStateD_25 hand dispatches state handler, sets state table D1
+0x0609b35a func chr_CharEUpdateAi_26 hand rolls stat check, faces target, picks move from distances
+0x0609b4d6 func chr_CharEUpdateAi_27 hand rolls stat check, faces target, picks move from distances
+0x0609b6ec func vs_UpdateAnimActor hand provisional: per-frame actor state machine, init then advance animation counter
+0x0609b8ec func en_SpawnEffectFromTemplate hand allocates child object and copies template fields into it
+0x0609b9dc func vs_Chr04_Stub1 hand provisional: empty stub returns immediately
+0x0609b9ea func vs_Chr04_EnterActionState1 hand provisional: clears attack and velocity, sets state byte
+0x0609ba1e func vs_Chr04_StateSelect1 hand provisional: chooses among sub-state handlers
+0x0609ba60 func vs_Chr04_MoveUpdate1 hand provisional: dispatches move by type, calls sub-state handlers
+0x0609ba82 func sys_ThunkExt_0609ba82 hand provisional: thunk jumping to external resident function
+0x0609ba88 func vs_Chr04_IdleStateUpdate1 hand provisional: updates idle state with timers
+0x0609bc2a func vs_Chr04_AttackSelect1 hand provisional: selects state table A by input and hit
+0x0609bd72 func vs_Chr04_HitReactSelect1 hand provisional: selects state table C by hit result
+0x0609be08 func vs_Chr04_StateHandler1 hand provisional: character state handler, no known callees
+0x0609be4e func vs_Chr04_HurtStateDispatch1 hand provisional: sets state table D1, dispatches handler
+0x0609bea0 func vs_Chr04_EnterSimpleState1 hand provisional: clears attack state, sets state fields
+0x0609bf04 func vs_Chr04_EnterSimpleState2 hand provisional: clears attack state, sets state fields
+0x0609c046 func vs_Chr04_AiChooseAction1 hand provisional: rolls stat chances and faces target; picks action
+0x0609c278 func vs_Chr05_Stub1 hand provisional: empty stub returns immediately
+0x0609c286 func vs_Chr05_StateSelect1 hand provisional: chooses among sub-state handlers
+0x0609c2d4 func vs_Chr05_MoveUpdate1 hand provisional: dispatches move by type, calls sub-state handlers
+0x0609c30e func vs_Chr05_RegisterSoundBanks1 hand provisional: registers sound banks, advances combo step
+0x0609c330 func vs_Chr05_IdleStateUpdate1 hand provisional: updates idle state with timers
+0x0609c420 func vs_Chr05_AttackSelect1 hand provisional: selects state table A by input and hit
+0x0609c506 func vs_Chr05_HitReactSelect1 hand provisional: selects state table C by hit result
+0x0609c542 func sys_ThunkExt_0609c542 hand provisional: thunk jumping to external resident function
+0x0609c568 func vs_Chr05_EnterSimpleState1 hand provisional: clears attack state, sets state fields
+0x0609c598 func vs_Chr05_EnterSimpleState2 hand provisional: clears attack state, sets state fields
+0x0609c5cc func vs_Chr05_EnterTurnGuardState1 hand provisional: flips facing, clears state, updates guard flags
+0x0609c60a func vs_Chr05_EnterTurnGuardState2 hand provisional: flips facing, clears state, updates guard flags
+0x0609c676 func vs_Chr05_EnterSimpleState3 hand provisional: clears attack state, sets state fields
+0x0609c6a4 func vs_Chr05_HurtLandState1 hand provisional: hurt or landing state spawns dust
+0x0609ca0c func en_SetTimerPairA hand provisional: stores constant values into two object fields
+0x0609ca1a func en_PollActionInput hand dispatches button handlers by state flags
+0x0609ca5e func en_UpdateStateDispatch hand dispatches by anim state, runs poll once when flag set
+0x0609ca98 func en_TryStartIdle hand starts idle action unless state 0x1a or flag set
+0x0609cab2 func en_PollAttackBit hand starts attack when pad bit 2 set
+0x0609caf8 func en_ApplyDamageFlash hand provisional: sets damage timers and branches on hit state
+0x0609cbf0 func en_StartIdle hand sets action 0x10, state 0x1a, clears fields
+0x0609cc24 func en_StartAttack hand sets attack action, state 2 and tail call
+0x0609cc90 func en_UpdateChaseMove hand provisional: checks pad bit and position threshold, advances movement
+0x0609d098 func en_SetTimerPairAndSavePos hand stores constants and saves x and z position
+0x0609d0b6 func en_PollActionInputB hand dispatches button handlers by state flags
+0x0609d0fa func en_UpdateStateDispatchB hand runs poll once when flag set
+0x0609d11c func en_TryStartMove hand starts move state unless action 0x11 or flag set
+0x0609d16a func en_PollButtonsByBit hand pad bit 1 or 4 calls matching handler
+0x0609d1d0 func en_RestoreSavedPos hand restores saved x and z into object when state ok
+0x0609d46c func sys_HaltBadData hand overlay end padding calls halt_baddata

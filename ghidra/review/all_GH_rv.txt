@@ -1,0 +1,237 @@
+0KRNL 0x06004000 sys_BootInit CONFIRM sys_BootInit name fits body
+0KRNL 0x060040ba sys_ErrorHalt CONFIRM sys_ErrorHalt name fits body
+0KRNL 0x060040c6 sys_ErrorHalt_2 RENAME sys_ErrorHaltB identical stub variant at next address
+0KRNL 0x060040d2 sys_ErrorHalt_3 RENAME sys_ErrorHaltC identical stub variant at next address
+0KRNL 0x060040de sys_ErrorHalt_4 RENAME sys_ErrorHaltD identical stub variant at next address
+0KRNL 0x06004130 sys_JumpThunk UNSURE sys_JumpThunk indirect call target unknown
+0KRNL 0x0600413a sys_InitSubsystems CONFIRM sys_InitSubsystems name fits body
+0KRNL 0x0600417c sys_InstallVectors RENAME sys_InstallVBlankVectors SCU vectors 0x40/0x41 are VBlank in/out
+0KRNL 0x06004200 sys_WaitFlagClear RENAME sys_WaitVBlankPollCd flag cleared by vblank handler then polls CD hirq
+0KRNL 0x06004270 sys_ResetSubsystemsIrqOff CONFIRM sys_ResetSubsystemsIrqOff name fits body
+0KRNL 0x060042b0 sys_InstallVectors_2 RENAME sys_InstallVBlankVectorsAlt SCU vectors 0x40/0x41 VBlank handlers variant
+0KRNL 0x060043dc sys_ShutdownSubsystems RENAME sys_FlushAndWaitFrame flushes gfx queue and waits vblank, no shutdown
+0KRNL 0x06004a5a main_ResetToTitleOrJump CONFIRM main_ResetToTitleOrJump name fits body
+0KRNL 0x06004a94 main_ClearGlobals CONFIRM main_ClearGlobals name fits body
+0KRNL 0x06004e4c save_ValidateRanges CONFIRM save_ValidateRanges name fits body
+0KRNL 0x060055e8 game_BackupPlayerState CONFIRM game_BackupPlayerState name fits body
+0KRNL 0x060057f8 game_RestorePlayerState CONFIRM game_RestorePlayerState name fits body
+0KRNL 0x06005aa0 game_LoadStitImage CONFIRM game_LoadStitImage name fits body
+0KRNL 0x06005af0 cmdq_Init CONFIRM cmdq_Init name fits body
+0KRNL 0x06005b54 cmdq_Push CONFIRM cmdq_Push name fits body
+0KRNL 0x06005b74 cmdq_PushAndWait CONFIRM cmdq_PushAndWait name fits body
+0KRNL 0x06005c04 vdp2_InitLayerStruct RENAME vdp1_InitSpriteDesc descriptor passed to VDP1 sprite submit; corner offsets
+0KRNL 0x06005c82 vdp2_InitLayerType0 RENAME vdp1_InitSpriteDescType0 sprite descriptor type 0
+0KRNL 0x06005c9a vdp2_InitLayerType2 RENAME vdp1_InitSpriteDescType2 sprite descriptor type 2 used by grid draw
+0KRNL 0x06005cb2 vdp2_InitLayerType3 RENAME vdp1_InitSpriteDescType3 sprite descriptor type 3 used by text draw
+0KRNL 0x06005d28 gfx_FreeSlot CONFIRM gfx_FreeSlot name fits body
+0KRNL 0x06005d4c vdp2_DrawRectDual RENAME vdp1_QueueRectDual builds rect corners and queues two VDP1 cmds
+0KRNL 0x06005dc6 vdp2_FillRectA RENAME vdp1_QueueRectViaC builds rect and calls vdp1 QueueCmdC
+0KRNL 0x06005e26 vdp2_FillRectB RENAME vdp1_QueueRectViaD builds rect and calls vdp1 QueueCmdD
+0KRNL 0x06005e98 vdp2_FillRectC RENAME vdp1_QueueRectViaDAlt builds rect and calls vdp1 QueueCmdD with other consts
+0KRNL 0x06005efc vdp2_InitRegsShadow CONFIRM vdp2_InitRegsShadow name fits body
+0KRNL 0x06005f30 vdp2_WriteBgRegs CONFIRM vdp2_WriteBgRegs name fits body
+0KRNL 0x06005f64 vdp2_ClearBgEnable CONFIRM vdp2_ClearBgEnable name fits body
+0KRNL 0x06005f76 vdp2_WaitFlag CONFIRM vdp2_WaitFlag name fits body
+0KRNL 0x06005f8a vdp2_SetupBackdrop UNSURE vdp2_SetupBackdrop queues clip and fill vdp1 cmds, backdrop claim weak
+0KRNL 0x06006094 vdp_ConditionalFlush CONFIRM vdp_ConditionalFlush name fits body
+0KRNL 0x06006138 vdp2_FillTableOnes UNSURE vdp2_FillTableOnes constant fill value not proven to be ones
+0KRNL 0x0600623e vdp2_ClearShadowTable CONFIRM vdp2_ClearShadowTable name fits body
+0KRNL 0x0600625e vdp2_DmaShadowTable CONFIRM vdp2_DmaShadowTable name fits body
+0KRNL 0x06006314 vdp2_SetColorTable CONFIRM vdp2_SetColorTable name fits body
+0KRNL 0x06006394 vdp2_PackRegs CONFIRM vdp2_PackRegs name fits body
+0KRNL 0x06006864 vdp2_InitMode0 CONFIRM vdp2_InitMode0 name fits body
+0KRNL 0x06006ac8 vdp2_InitMode1 CONFIRM vdp2_InitMode1 name fits body
+0KRNL 0x06006d06 vdp2_InitMode2 CONFIRM vdp2_InitMode2 name fits body
+0KRNL 0x06006f0c vdp2_InitMode3 CONFIRM vdp2_InitMode3 name fits body
+0KRNL 0x060071f0 vdp2_SetColorOffset CONFIRM vdp2_SetColorOffset name fits body
+0KRNL 0x06007230 pad_InitState CONFIRM pad_InitState name fits body
+0KRNL 0x060072c2 pad_InitPeripheral CONFIRM pad_InitPeripheral name fits body
+0KRNL 0x06007300 pad_PollRequest CONFIRM pad_PollRequest name fits body
+0KRNL 0x06007dc6 pad_FindLastActive CONFIRM pad_FindLastActive name fits body
+0KRNL 0x06008000 pad_CheckComboHeld CONFIRM pad_CheckComboHeld name fits body
+0KRNL 0x06008064 pad_AnyButtonHeld RENAME pad_AnyPadMaskHeld true if any pad holds all mask bits
+0KRNL 0x060084f0 snd_SendCommandIndexed CONFIRM snd_SendCommandIndexed name fits body
+0KRNL 0x06008552 snd_SendCommandTable CONFIRM snd_SendCommandTable name fits body
+0KRNL 0x06008580 snd_ResetChannels CONFIRM snd_ResetChannels name fits body
+0KRNL 0x06008610 snd_InitDriverState CONFIRM snd_InitDriverState name fits body
+0KRNL 0x06008636 snd_SetMasterFlags CONFIRM snd_SetMasterFlags name fits body
+0KRNL 0x0600865e snd_FinishInit CONFIRM snd_FinishInit name fits body
+0KRNL 0x060086e0 snd_SetVolumeClamped CONFIRM snd_SetVolumeClamped name fits body
+0KRNL 0x06008720 snd_WriteReg RENAME snd_PlayCdTrack CD play command for track, volume set, waits status
+0KRNL 0x06008800 snd_WriteBlock RENAME snd_PlayCdTrackFromOffset CD seek track then offset then play with 0x80 flag
+0KRNL 0x06008928 snd_SeekWrite RENAME snd_PlayCdFromPosition CD seek to position then play
+0KRNL 0x060089c6 snd_ReadStatus RENAME snd_ReadCdPosition CD status call returns position field
+0KRNL 0x060090b4 cd_InitReadRequest RENAME cd_InitGfs calls GFS init with buffer config
+0KRNL 0x060090de cd_GetFileSectorCount RENAME cd_GetFileLength returns (nsect-1)*sectsize+last = byte length
+0KRNL 0x06009130 cd_LoadFileStart RENAME cd_LoadFileWait opens reads and polls until transfer complete
+0KRNL 0x06009218 cd_OpenFileHandle CONFIRM cd_OpenFileHandle name fits body
+0KRNL 0x0600924c cd_SetFileHandleParam UNSURE cd_SetFileHandleParam seek-transfer to end size, purpose unclear
+0KRNL 0x0600926e cd_ReadFileClamped CONFIRM cd_ReadFileClamped name fits body
+0KRNL 0x060092ce cd_CheckReadState CONFIRM cd_CheckReadState name fits body
+0KRNL 0x060095e4 vdp1_ResetCmdBuffers CONFIRM vdp1_ResetCmdBuffers name fits body
+0KRNL 0x06009790 math_Atan2Fixed CONFIRM math_Atan2Fixed name fits body
+0KRNL 0x06009a06 text_NumberToDigits CONFIRM text_NumberToDigits name fits body
+0KRNL 0x06009b28 task_Create3Args CONFIRM task_Create3Args name fits body
+0KRNL 0x06009b7c task_Create3Args_2 RENAME task_Create3ArgsB same shape different callback
+0KRNL 0x06009bb6 task_Create1Arg CONFIRM task_Create1Arg name fits body
+0KRNL 0x06009dd8 save_CheckBackupExists CONFIRM save_CheckBackupExists name fits body
+0KRNL 0x06009e4c save_WriteBackupFile CONFIRM save_WriteBackupFile name fits body
+0KRNL 0x0600a1fa text_ShiftTileCodes RENAME text_NumberToAsciiDigits digits plus 0x30, terminators zeroed
+0KRNL 0x0600a280 vdp1_DrawSpriteGrid CONFIRM vdp1_DrawSpriteGrid name fits body
+0KRNL 0x0600a42e vdp1_DrawTextString CONFIRM vdp1_DrawTextString name fits body
+0KRNL 0x0600a740 vdp1_ClearCmdByAddr CONFIRM vdp1_ClearCmdByAddr name fits body
+0KRNL 0x0600a758 vdp1_BuildCmdTable CONFIRM vdp1_BuildCmdTable name fits body
+0KRNL 0x0600a7c8 vdp1_AllocCmdSlot CONFIRM vdp1_AllocCmdSlot name fits body
+0KRNL 0x0600a836 vdp1_QueueCmdA CONFIRM vdp1_QueueCmdA name fits body
+0KRNL 0x0600a8bc vdp1_QueueCmdB CONFIRM vdp1_QueueCmdB name fits body
+0KRNL 0x0600a990 vdp1_SetupLocalCoordCmd RENAME vdp1_SetupUserClipCmd writes CMDCTRL 8 with corners A and C
+0KRNL 0x0600aa24 vdp1_SetupPolygonCmd RENAME vdp1_SetupLineCmd writes CMDCTRL 6 line with two points and gouraud
+0KRNL 0x0600aa70 vdp1_QueueCmdC CONFIRM vdp1_QueueCmdC name fits body
+0KRNL 0x0600ab24 vdp1_QueueCmdD CONFIRM vdp1_QueueCmdD name fits body
+0KRNL 0x0600f20c list_ReclaimIndices CONFIRM list_ReclaimIndices name fits body
+0KRNL 0x0601069c vdp1_SubmitSpriteCmd CONFIRM vdp1_SubmitSpriteCmd name fits body
+0KRNL 0x06010e74 vdp1_SubmitSpriteCmdRaw CONFIRM vdp1_SubmitSpriteCmdRaw name fits body
+0KRNL 0x060115b2 math_Hypot2D CONFIRM math_Hypot2D name fits body
+0KRNL 0x060116a4 spline_SolveSecondDerivs CONFIRM spline_SolveSecondDerivs name fits body
+0KRNL 0x060128a6 gfs_IsDataReady RENAME gfs_BytesToSectors divides param by sector size, 0 if unset
+0KRNL 0x060128f0 gfs_GetFileSizeInfo CONFIRM gfs_GetFileSizeInfo name fits body
+0KRNL 0x06012954 gfs_GetFileLength RENAME gfs_GetHandleStatus mostly used to fetch handle flags
+0KRNL 0x06012c92 gfs_StartSeekTransfer CONFIRM gfs_StartSeekTransfer name fits body
+0KRNL 0x06012de4 gfs_CheckCdReady CONFIRM gfs_CheckCdReady name fits body
+0KRNL 0x06012ef8 gfs_SetTransferMode58 CONFIRM gfs_SetTransferMode58 name fits body
+0KRNL 0x06012f50 gfs_SetHandleParamA4 RENAME gfs_SetBufferMode forwards to buf_SetMode
+0KRNL 0x0601300a gfs_SetBufferParam RENAME gfs_SetBufferSize forwards to buf_SetSize
+0KRNL 0x0601305e gfs_SetCurrentHandle CONFIRM gfs_SetCurrentHandle name fits body
+0KRNL 0x06013540 gfs_ReadDiscHeader RENAME gfs_ReadVolumeDescriptor reads sector 16-style header, 6-byte signature check
+0KRNL 0x06013616 gfs_GetRootDirInfo CONFIRM gfs_GetRootDirInfo name fits body
+0KRNL 0x060136bc gfs_OpenRootDir CONFIRM gfs_OpenRootDir name fits body
+0KRNL 0x06013876 gfs_CalcEntryLength CONFIRM gfs_CalcEntryLength name fits body
+0KRNL 0x060138d8 gfs_ResetReadRequest CONFIRM gfs_ResetReadRequest name fits body
+0KRNL 0x06013ad8 cdc_CallAndReturnZero CONFIRM cdc_CallAndReturnZero name fits body
+0KRNL 0x06013ae6 cdc_CheckStatusReady CONFIRM cdc_CheckStatusReady name fits body
+0KRNL 0x06013d94 cdc_WaitInitDone UNSURE cdc_WaitInitDone generic hirq wait, init role unproven
+0KRNL 0x06015434 strm_InitBuffers RENAME smpc_InitIntback registers vector 0x47 and starts SMPC command 0x10
+0KRNL 0x060155ce strm_StepFrame RENAME smpc_StepIntback per-frame intback step swaps peripheral buffers
+0KRNL 0x06015db8 strm_CheckCountReached UNSURE strm_CheckCountReached smpc buffer helper, role unclear
+0KRNL 0x06015dd0 strm_CheckBitFlag UNSURE strm_CheckBitFlag smpc buffer helper, role unclear
+0KRNL 0x06015e04 strm_CopyEveryOtherByte RENAME smpc_CopyOregBytes steps source by 2 = odd-byte SMPC regs
+0KRNL 0x06015e3c strm_CopyColumnToRows UNSURE strm_CopyColumnToRows row buffer scatter, role unclear
+0KRNL 0x06015eb4 strm_ResetState RENAME smpc_ResetIntbackState clears intback counters
+0KRNL 0x06015f10 strm_StartTransfer RENAME smpc_StartIntback sets SF busy, writes IREG, COMREG 0x10
+0KRNL 0x06015f84 strm_FlushPendingRows UNSURE strm_FlushPendingRows row buffer filler, role unclear
+0KRNL 0x06015fe0 strm_SetRowByte0 UNSURE strm_SetRowByte0 row slot byte store, role unclear
+0KRNL 0x06015ffe strm_SetRowByte1 UNSURE strm_SetRowByte1 row slot byte store, role unclear
+0KRNL 0x0601602c strm_ProcessRowsTwice UNSURE strm_ProcessRowsTwice merge helper, role unclear
+0KRNL 0x06016076 strm_MergeRowBlocks CONFIRM strm_MergeRowBlocks merges row blocks between buffers, body matches
+0KRNL 0x06016618 gfs_DispatchDirOpA RENAME gfs_DispatchKindOpA tail-calls via 16-byte table indexed by handle kind field +0x28, not a directory
+0KRNL 0x06016640 gfs_DispatchDirOpB RENAME gfs_DispatchKindOpB same kind-indexed table dispatch as A
+0KRNL 0x06016668 gfs_OpenStreamHandle CONFIRM gfs_OpenStreamHandle allocates stream and sets up handle
+0KRNL 0x06016754 gfs_CloseStreamHandle CONFIRM gfs_CloseStreamHandle releases stream via two helpers
+0KRNL 0x0601676c gfs_ReadStreamBytes CONFIRM gfs_ReadStreamBytes reads from stream and advances position
+0KRNL 0x06016828 gfs_SetStreamFlagAndWait UNSURE gfs_SetStreamFlagAndWait stores param at +0x18 then waits; purpose of flag unclear
+0KRNL 0x06016864 gfs_StartStreamRead UNSURE gfs_StartStreamRead queues command 4 then runs; used by seek to restart, role unclear
+0KRNL 0x06016898 gfs_SeekStream CONFIRM gfs_SeekStream seeks by absolute or relative offset
+0KRNL 0x06016afc gfs_ForwardToLowLevelA RENAME gfs_SeekDiscForHandle passes request and ticket +0x1c to checked cdc_SeekDisc wrapper
+0KRNL 0x06016b0e gfs_StartTransferCheck UNSURE gfs_StartTransferCheck queues stop command and runs until done returning 1 on success; name vague
+0KRNL 0x06016b4a gfs_AllocateStreamSlot RENAME gfs_AcquireStreamLock calls LockCdAccess and stores ticket at +0x1c, no slot alloc
+0KRNL 0x06016b82 gfs_FreeStreamSlotA RENAME gfs_IsStreamLockHeld calls IsLockHeld; zero leads to error 8, frees nothing
+0KRNL 0x06016b8e gfs_FreeStreamSlotB RENAME gfs_ReleaseStreamLock calls UnlockCdAccess with handle ticket
+0KRNL 0x06016ba4 cdc_InitCdBlock CONFIRM cdc_InitCdBlock resets state, polls status and HIRQ, returns error codes
+0KRNL 0x06016df2 gfs_AllocFileSlot CONFIRM gfs_AllocFileSlot finds first free flag in 0x18-entry table
+0KRNL 0x06016e2c gfs_FreeFileSlot CONFIRM gfs_FreeFileSlot validates index and clears flag
+0KRNL 0x06016e5a gfs_AllocSelectorSlot CONFIRM gfs_AllocSelectorSlot finds free entry in selector table
+0KRNL 0x06016e88 gfs_FreeSelectorSlot CONFIRM gfs_FreeSelectorSlot queues release then clears flag
+0KRNL 0x06016f10 cdc_GetStatusMasked RENAME cdc_GetLastSessionFad calls GetSessionInfo twice and masks result into disc address used by ReadDiscHeader
+0KRNL 0x06016f36 gfs_LockCdAccess CONFIRM gfs_LockCdAccess sets flag +0x30 and increments ticket counter +0x38
+0KRNL 0x06016f74 gfs_UnlockCdAccess CONFIRM gfs_UnlockCdAccess clears lock flag when ticket matches
+0KRNL 0x06016fc0 gfs_QueueFileCommandSeq CONFIRM gfs_QueueFileCommandSeq appends 16-byte entry to command queue
+0KRNL 0x0601705c gfs_StartFilterAndSelect UNSURE gfs_StartFilterAndSelect three CDC calls with getter-like names and no callers
+0KRNL 0x0601709e gfs_QueueStopCommand CONFIRM gfs_QueueStopCommand validates slot and ticket then runs executor 1
+0KRNL 0x060170fe gfs_CheckAndIssueCommandA RENAME gfs_CheckedPlayDisc checks ticket and status, sets HIRQ bits, calls cdc_PlayDisc
+0KRNL 0x06017160 gfs_QueueSeekCommand CONFIRM gfs_QueueSeekCommand fills slot and runs executor 2
+0KRNL 0x060171cc gfs_QueueSetPositionCommand CONFIRM gfs_QueueSetPositionCommand fills slot and runs executor 3
+0KRNL 0x06017220 gfs_FinishPositionCommand CONFIRM gfs_FinishPositionCommand ends data transfer and clears ticket +0x34
+0KRNL 0x06017266 gfs_QueueCommand4 CONFIRM gfs_QueueCommand4 fills slot with three params and runs executor 4
+0KRNL 0x060172e8 cdc_GetStatusReport CONFIRM cdc_GetStatusReport reads CD status report, handles special states
+0KRNL 0x06017344 gfs_CheckAndIssueCommandB RENAME gfs_CheckedSeekDisc checks ticket and status then calls cdc_SeekDisc
+0KRNL 0x060173b2 gfs_QueueCommand5 CONFIRM gfs_QueueCommand5 needs two active slots, fills four params, runs executor 5
+0KRNL 0x0601743e gfs_ResetSelectorCmd UNSURE gfs_ResetSelectorCmd callee is GetSectorInfo not reset, no callers
+0KRNL 0x06017488 gfs_QueueCommand7 RENAME gfs_QueueChangeDirCommand stores dir id and selector then runs executor 7 which does ChangeDirectory
+0KRNL 0x0601750c gfs_QueueConnectCommand CONFIRM gfs_QueueConnectCommand validates ids and appends 12-byte entry for executor 6
+0KRNL 0x06017604 gfs_ReadSectorCheckBuffer RENAME gfs_ReadDirEntryCached param is file id; loads directory window if outside then fetches entry info
+0KRNL 0x060176d2 gfs_GetBufferSize RENAME gfs_GetFreeBufferBlocks returns third output of buffer info command, caller treats zero as full
+0KRNL 0x06017704 gfs_RunCommandStep CONFIRM gfs_RunCommandStep one scheduler step with timeout, status poll, runs executors
+0KRNL 0x060177f6 gfs_IsExecutorIdle CONFIRM gfs_IsExecutorIdle tests state word of executor
+0KRNL 0x0601786e gfs_RunExecutor CONFIRM gfs_RunExecutor dispatches to executor 0-7 by index
+0KRNL 0x060178d2 gfs_RunCommandsUntilDone CONFIRM gfs_RunCommandsUntilDone sets timeout and loops RunCommandStep
+0KRNL 0x06017904 gfs_ExecutorSeqQueue CONFIRM gfs_ExecutorSeqQueue three states set filter mode, subheader conditions, range
+0KRNL 0x06017a9c gfs_ExecutorStop CONFIRM gfs_ExecutorStop state machine ends with device connection set and HIRQ 0x40 wait
+0KRNL 0x06017b08 gfs_ExecutorSeek CONFIRM gfs_ExecutorSeek gets size, clamps length, seeks, reads sector count
+0KRNL 0x06017c58 gfs_ExecutorSetPosition CONFIRM gfs_ExecutorSetPosition gets sector data then waits init done
+0KRNL 0x06017ce8 gfs_ExecutorCommand4 CONFIRM gfs_ExecutorCommand4 four states reset selector, delete sector data, HIRQ wait
+0KRNL 0x06017e10 gfs_ExecutorCommand5 CONFIRM gfs_ExecutorCommand5 five states filter mode get/set, move sector data, wait
+0KRNL 0x06017f40 gfs_ExecutorCommand7 RENAME gfs_ExecutorChangeDirectory reads fs scope, ReadDirectory, then ChangeDirectory; no sector read issued
+0KRNL 0x0601811e gfs_ExecutorConnect CONFIRM gfs_ExecutorConnect calls SetFilterConnection per 12-byte queue entry and compacts rest
+0KRNL 0x060182e8 gfs_ResetCommandState CONFIRM gfs_ResetCommandState clears slot flags and queue state fields
+0KRNL 0x06018362 cdc_SaveStatusByte CONFIRM cdc_SaveStatusByte reads CD status, stores first byte at +0x40, returns 0x40
+0KRNL 0x0601839c cdc_WaitHirqAndClear CONFIRM cdc_WaitHirqAndClear polls HIRQ mask bounded times then clears bits, 0 on success
+0KRNL 0x060183f8 cdc_IssueCommandMapResult CONFIRM cdc_IssueCommandMapResult calls InitCdBlock, sets flag bit0, maps error codes to GFS errors
+0KRNL 0x0601849c gfs_InitFileInfo CONFIRM gfs_InitFileInfo fills file record from dir entry or lookup, computes sectors and size
+0KRNL 0x0601856a gfs_SetReadLimitFromSeek CONFIRM gfs_SetReadLimitFromSeek stores limit +0x54 and remaining +0x58 from seek position
+0KRNL 0x060185a0 gfs_GetFileInfo CONFIRM gfs_GetFileInfo copies optional fields from file record to out pointers
+0KRNL 0x060187d0 gfs_StartCdPlayOrder RENAME gfs_PollCdDriveState checks lock held and issues status request; callers use result 2 as drive ready, not a play start
+0KRNL 0x06018848 gfs_StartReadRequest RENAME gfs_SeekDiscToFileOffset locks CD, converts offset, seeks disc via checked seek, unlocks, maps errors
+0KRNL 0x060188e4 gfs_ConvertSectorOffset CONFIRM gfs_ConvertSectorOffset scales offset by sector size type via divide helper
+0KRNL 0x0601892e gfs_GetCdStateCode CONFIRM gfs_GetCdStateCode reads status report and maps status nibble to state codes 0-6
+0KRNL 0x06018a00 gfs_GetSectorSizeFromMode CONFIRM gfs_GetSectorSizeFromMode returns sector size constant from mode bits 0x40 0x10 0x08
+0KRNL 0x06018a3e gfs_MapReadStateToCode CONFIRM gfs_MapReadStateToCode maps transfer state to output code, no callers
+0KRNL 0x06018ac4 gfs_PlanTransferChunk CONFIRM gfs_PlanTransferChunk computes chunk length from remaining and limit and checks buffer window
+0KRNL 0x06018c0c gfs_ReadDirEntries CONFIRM gfs_ReadDirEntries dispatches to 12-byte or 24-byte directory reader by flag
+0KRNL 0x06018c2e gfs_FindDirEntryByName CONFIRM gfs_FindDirEntryByName scans 24-byte entries comparing 12-byte name, stops at last flag
+0KRNL 0x06018ce2 gfs_InitCdWait RENAME gfs_ChangeDirectoryAndWait loops queue-change-dir command 7 with selector 0x17 and run-step until done, maps errors
+0KRNL 0x06018d60 gfs_ReadDirectoryEntries12 CONFIRM gfs_ReadDirectoryEntries12 parses directory records into 12-byte entries with selector pseudo-entries
+0KRNL 0x06018f2c gfs_ReadDirectoryEntries24 CONFIRM gfs_ReadDirectoryEntries24 parses directory records into 24-byte entries with names plus selector entries
+0KRNL 0x06019108 gfs_DirReaderInit CONFIRM gfs_DirReaderInit sets file, buffer, position -1, size in reader context
+0KRNL 0x06019126 gfs_DirReaderRead CONFIRM gfs_DirReaderRead reads N bytes from buffered file in 2048-byte sector chunks refilling as needed
+0KRNL 0x0601923c gfs_DirReadShortBE CONFIRM gfs_DirReadShortBE skips little-endian half and returns big-endian 16-bit half of both-endian field
+0KRNL 0x06019280 gfs_DirReadLongBE CONFIRM gfs_DirReadLongBE skips little-endian half and returns big-endian 32-bit half
+0KRNL 0x060192e0 gfs_DirReadRecordLength CONFIRM gfs_DirReadRecordLength reads length byte and advances to next sector on zero padding
+0KRNL 0x06019360 gfs_DirParseRecord CONFIRM gfs_DirParseRecord parses ISO9660 record LBA, size, flags, name with version suffix stripped
+0KRNL 0x06019698 gfs_FillEntrySelector CONFIRM gfs_FillEntrySelector fills dir entry for selector pseudo-file with type 4 and marks selector used
+0KRNL 0x060196dc gfs_FindSelectorByName CONFIRM gfs_FindSelectorByName compares 12-byte names across selectors, returns 1 with id and size on match
+0KRNL 0x06019816 gfs_InitFileInfoFromEntry CONFIRM gfs_InitFileInfoFromEntry inits file record from selector dir entry and computes sector count
+0KRNL 0x06019902 buf_SetReadPosition CONFIRM buf_SetReadPosition clamps position to size and resets or adjusts buffered window fields
+0KRNL 0x06019960 buf_InitStream CONFIRM buf_InitStream zeros stream context, block count 1, mode 3
+0KRNL 0x060199a6 buf_SetReadRequest CONFIRM buf_SetReadRequest stores request at +0x18, clears +0x1c, resets state 6 to 0
+0KRNL 0x060199d2 buf_FlushStream CONFIRM buf_FlushStream runs transfer steps until idle or done and releases pending windows
+0KRNL 0x06019a68 buf_RunStepsByMode CONFIRM buf_RunStepsByMode loops buf_TransferStep one or two times by mode and state
+0KRNL 0x06019aea buf_DrainStep CONFIRM buf_DrainStep acquires buffer and hands it straight back without copy, advancing counters
+0KRNL 0x06019b5e buf_TransferStep CONFIRM buf_TransferStep state machine 0-5 acquire map start copy status finish
+0KRNL 0x06019c5c buf_AcquireTransferBuffer CONFIRM buf_AcquireTransferBuffer sizes chunk from remaining and requests buffer into +0x78
+0KRNL 0x06019cd4 buf_MapSourceBlock CONFIRM buf_MapSourceBlock sizes source span and allocates window into +0x10
+0KRNL 0x06019ddc scu_DmaSetupAndStart CONFIRM scu_DmaSetupAndStart programs SCU DMA channel with strides and starts it
+0KRNL 0x06019f64 mem_CopyStrided CONFIRM mem_CopyStrided longword copy with src/dst strides plus tail bytes
+0KRNL 0x06019fb0 buf_CallConvertStart CONFIRM buf_CallConvertStart calls start handler from 12-byte mode table
+0KRNL 0x0601a002 buf_CopyOrConvertBlock CONFIRM buf_CopyOrConvertBlock copies block via mode table handler or callback and advances offset
+0KRNL 0x0601a0e4 buf_CallConvertStatus CONFIRM buf_CallConvertStatus calls status handler from mode table entry +8
+0KRNL 0x0601a1b6 buf_AllocWindow CONFIRM buf_AllocWindow fills single global window descriptor or returns 0 if busy
+0KRNL 0x0601a218 gfs_UpdateCdFlagFromReg CONFIRM gfs_UpdateCdFlagFromReg clears flag bit1, sets from reg bit 0x10, clears header; init-path use fits
+0KRNL 0x0601a242 gfs_InitFileInfoFromSelector CONFIRM gfs_InitFileInfoFromSelector selector-type entry (type bits 2) fills file record, sector math; matches caller dispatch
+0KRNL 0x0601a35c buf_SetReadPosition_2 RENAME buf_SetReadPositionWindowed clamped position with window fields and mode flag at +0x4c; alt driver table slot, drop numeric suffix
+0KRNL 0x0601a3f4 cdc_GetRegsCopy RENAME cdc_ExecCommandSaveStatus runs command packet then stores first status byte or packed regs to global; callers are status getters
+0KRNL 0x0601a464 sh2_SetIntMaskAndCall CONFIRM sh2_SetIntMaskAndCall SR mask raised to 15 around a call, restored; decompile of SR is noisy but fits
+0KRNL 0x0601a4cc sh2_DmacSetChannel CONFIRM sh2_DmacSetChannel writes SAR/DAR/TCR/CHCR at 0x20 stride per channel
+0KRNL 0x0601a52c sh2_InitIrqChannel CONFIRM sh2_InitIrqChannel channel 0-2 picks vector 0x4b/4a/49 and handler, installs and flags
+0KRNL 0x0601a7b4 list_SetEntryA CONFIRM list_SetEntryA sets type 1 with looked-up value and zeros counters; pair of SetEntryB
+0KRNL 0x0601a90a list_GetEntryInfo CONFIRM list_GetEntryInfo returns data ptr, value, ushort from entry via optional out params
+0KRNL 0x0601ab80 cdc_GetToc RENAME cdc_GetBufferSize CD block cmd 0x50 returns three buffer fields; caller is gfs_GetBufferSize, not a TOC
+0KRNL 0x0601abdc cdc_GetSessionInfo_2 RENAME cdc_GetSectorNumber CD block cmd 0x51 with partition arg returns a sector count; used for remaining size in seek executor
+0KRNL 0x0601ac2c cdc_SeekCommand52 RENAME cdc_CalcActualSize CD block cmd 0x52 with three args sets size calc; followed by cmd 0x53 get in executor
+0KRNL 0x0601ac78 cdc_GetStatus53 RENAME cdc_GetActualSize CD block cmd 0x53 returns masked 24-bit size result; pairs with 0x52
+0KRNL 0x0601acc4 cdc_ExecCommandChecked CONFIRM cdc_ExecCommandChecked reads HIRQ, returns -1 if bit 0x40 clear else runs command
+0KRNL 0x0601b6ac math_SignedDiv32 CONFIRM math_SignedDiv32 unrolled DIV1 signed 32-bit divide returning quotient
+0KRNL 0x0601b7b0 math_SignedDivMod32 CONFIRM math_SignedDivMod32 same chain returning quotient and remainder as 64-bit; callers use remainder test
+0KRNL 0x0601b950 math_ShiftJumpTable CONFIRM math_ShiftJumpTable variable shift via jump table, neg returns input, >=32 returns 0
+0KRNL 0x0601bb28 math_ShiftJumpTable_2 UNSURE math_ShiftJumpTable_2 sibling shift table, direction unproven; can't pick better name
+0KRNL 0x0601bbd8 stub_0601bbd8 RENAME str_CopyAlignedThunk tail wrapper that just calls strcpy_Aligned through pointer
+0KRNL 0x0601bbec math_UnsignedDiv32 CONFIRM math_UnsignedDiv32 unrolled DIV1 unsigned divide, quotient; caller uses as sector division

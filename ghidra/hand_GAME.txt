@@ -1,0 +1,522 @@
+0x06060000 func game_StageModeMain hand provisional: GAME.BIN entry; per-player slot setup, stage-state loop, fades, stage-id switch
+0x060609ee func gfx_SetBufferSize hand provisional: stores remaining size into buffer descriptor and calls setup callbacks
+0x06060c58 func game_LoadEffectFiles hand loads CHR.BIN, EFT.BIN, EFT1.BIN, EFT2.BIN and relocates offset tables
+0x06060cdc func game_LoadFileByIndex hand loads file named by pointer table index into dest, returns dest plus size
+0x06060cfe func game_RelocateTableSet hand relocates up to three 4-pointer offset groups into table slots 
+0x06060da8 func game_LoadCharTableFile hand loads file from table indexed by param, relocates via palette table entries
+0x06060dfe func game_LoadSingleTableFile hand loads indexed file and relocates its three sub-tables
+0x06060e5c func cam_SetViewParams hand provisional: calls setup with 0xe, copies four words, stores three shorts
+0x06060f00 func game_InitStage hand clears state, loads CHR per player type, dispatches 64 stage init handlers, spawns players
+0x060619ec func script_UpdateStageScript hand steps stage script pointer by state, waits on scroll position, runs spawn commands
+0x06061b2c func obj_AttachShadow hand allocates 0xc-byte child task linked to parent object
+0x06061b58 func obj_AttachShadow_2 hand identical duplicate allocating 0xc-byte child task for object
+0x06061b94 func obj_CreateActorExtension hand allocates 0x20-byte child, initialises motion fields, links to owner object
+0x06061c5e func task_CreateForObject hand allocates 0x24-byte task from handler table, links to object
+0x06061cc6 func obj_SetSpawnPos hand writes x and y shorts into object position fields
+0x06061d18 func script_ParseSpawnCommand hand reads spawn record from script stream, spawns object, sets position and flags
+0x06061ea6 func obj_CreateFromTemplate hand allocates 0x20 object, fills fields from template, attaches shadows and tasks
+0x060620d0 func spawn_SetTemplateEntry hand writes three shorts into 7-short spawn template table row
+0x060620f6 func obj_SpawnFromTable hand fills template struct from spawn table row and calls obj_CreateFromTemplate
+0x06062162 func obj_SpawnWithTask hand spawns object type 6 and optionally attaches task with script pointer
+0x06062238 func game_UpdatePlayerSlots hand first-frame assigns five player slot indexes, then calls mode callback
+0x06062428 func flag_Test hand tests bit in flag word array indexed by high half of arg
+0x06062452 func flag_Set hand sets bit in flag word array indexed by high half of arg
+0x06062480 func flag_Clear hand clears bit in flag word array indexed by high half of arg
+0x06062588 func player_GetSlotIndex hand returns 1 or 2 if object matches player slot 1 or 2
+0x0606261a func cam_InitFollowBounds hand computes min and max x over active players, sets camera target and extents
+0x0606272a func cam_UpdateFollow hand moves camera center and half-width toward targets with capped speed
+0x060627f0 func obj_ClearMoveState hand zeroes movement flag and six velocity words of object
+0x06062810 func obj_UpdateFacing hand sets facing flag from x compare and calls flip handler on change
+0x06062876 func obj_StartJumpTo hand computes arc velocities toward target x and z, sets jump animation
+0x06062970 func ai_MoveTowardTarget hand classifies distance to target, starts walk or run animation 0x16 or 0x17
+0x06062ae8 func fx_EmitTrail hand loops emitting effect objects along object position when within camera range
+0x06062bc4 func game_SpawnMissingPlayers hand spawns player objects for empty slots 1 to 5
+0x06062cb4 func stub_06062cb4 hand empty return stub
+0x06062cb8 func stub_06062cb8 hand empty return stub
+0x06062cbc func obj_UpdateRandomFacingAnim hand picks random idle animation 0xd or 0xe, updates facing speed
+0x06062f68 func obj_BuildMoveVectors hand provisional: accumulates fixed-point velocity vector entries from nibble flags
+0x06063504 func game_CallClearFuncs hand provisional: calls one function, a second one if argument nonzero
+0x0606352a func obj_CountActiveInRange hand counts nonzero entries in object slot table between two indices
+0x0606354a func obj_ClearAllRotations hand zeroes three shorts of every object in slot table
+0x06063572 func obj_ClearColorBuffers hand zeroes 32-entry colour buffers of one or all slot objects
+0x060635e0 func cam_SetTargetPos hand sets or interpolates camera look-at target with frame count
+0x060636aa func cam_ResetLerp hand resets lerp counter and sets shorts from constant
+0x060636b8 func cam_UpdateLerpTarget hand steps lerp of 3D position, writes vector, calls matrix setter
+0x06063760 func cam_ApplyOffsetPos hand copies position and adds offset to camera position triple
+0x06063796 func cam_SetPosLerp hand sets or interpolates camera position with frame count
+0x0606384c func cam_UpdatePosLerp hand steps position lerp, stores integer parts to camera fields
+0x060638a8 func cam_SetMode hand stores short into camera struct field 8
+0x06063ac8 func gfx_SubmitPaletteBlock hand builds small descriptor with two color RAM pointers and calls submit function
+0x06063b00 func pal_WriteColorBuffers hand copies counted shorts into two mirrored color buffers at offset
+0x06063b4c func fade_InitChannelFromRecord hand copies fade record fields into channel struct, clears counters
+0x06063b64 func fade_SetupRecords hand initialises two fade channel pairs from four records
+0x06063bac func fade_ResetState hand resets fade state fields and clears 32-word color tables
+0x06063c20 func fade_ClearFlags hand zeroes two fade flag shorts
+0x06063c48 func obj_SetMoveVelToTarget hand computes per-axis velocity toward target position, sets 16-frame timer
+0x06063c90 func obj_StepMoveVel hand adds velocity to position each frame and decrements timer
+0x06063cc6 func hud_InitLayoutTables hand fills HUD position tables for player gauges with constants
+0x06063e60 func hud_DrawPlayerBars hand draws player health and gauge bars as VDP1 commands, with lerped damage trail
+0x060646fa func hud_DrawGaugeSegments8 hand draws up to six 8-pixel gauge segments with sprite command stepping
+0x060647bc func hud_DrawGaugeSegments4 hand draws up to six 4-pixel gauge segments with sprite command stepping
+0x06064868 func hud_DrawGaugeFrame hand draws gauge frame, MP and experience digits as polygon and sprite commands
+0x06064c34 func game_GetMaskedFlags hand returns global short ANDed with mask
+0x06064c3e func game_GetGlobalByteA hand returns signed byte global
+0x06064c44 func game_GetGlobalByteB hand returns signed byte global
+0x0606538c func text_DrawGlyphPairA hand provisional; draws two consecutive sprite glyphs ids 0xd/0xe at table slot, tail-calls draw function
+0x060653b4 func text_DrawGlyphPairB hand draws two consecutive sprite glyphs ids 0xe/0xf at slot*0x40 offset via indirect draw
+0x060653f0 func text_DrawGlyphString hand draws glyph string, negative entry means newline, steps x by 8 per char
+0x06065510 func menu_DrawSelectableLines hand draws text lines, highlights selected line with scale 0x100 vs dim, per-line spacing by count
+0x06065622 func text_DrawStringAtPos hand draws glyph string at stored x,y, newline on -1, skips zeros, optional flag bit
+0x06065f90 func hud_DrawStatusScreen hand draws character status numbers: level, stats, exp via hud_DrawDigits at fixed rows
+0x0606616c func hud_DrawDigits hand draws param_3 digits of a number right to left using digit sprites, leading zero blanking
+0x06066374 func combat_ResolveHitOnTarget hand attacker hits target: sets damage, hit flags, facing, hitstop and reaction state from attack data
+0x060665f4 func combat_CheckAllAttackHits hand nested loop over object pairs, box overlap test, applies hit result, picks hit sound 0x10-0x13
+0x06066bde func combat_CheckSpellHits hand pair loop for projectile/spell types 0x28-0x2d,0x6c-0x6e,0x3c,0x75; overlap then apply hit
+0x06067050 func combat_CheckMeleeHits hand pair loop with box overlap, applies damage, hit reaction state, knockback, spawns hit effect
+0x06067842 func obj_SeparateOverlapping hand pair loop: on box overlap pushes objects apart along x by half overlap, sets flag bit 8
+0x06067a24 func combat_CheckEffectBoxHits hand loops 0x18-byte effect boxes vs objects, on overlap copies box and applies facing and position offset
+0x06067cfc func combat_CalcAttackDamage hand damage from attacker stat +0x68 scaled by two multiply helpers, passes attack type +0x72
+0x06067e0c func combat_CalcMagicBonus hand scales attacker value +0x68 by two multiply/shift steps with fixed-point rounding
+0x06067ed8 func combat_CalcDefenseReduction hand scales value +0x6a by two multiply/shift steps, returns reduction
+0x06067f90 func combat_CalcHitstunFrames hand scales byte +0x71 by multiplier, clamps result to 0x20
+0x06068028 func combat_SpawnStatusEffect hand for attack type 8,9,10 creates effect object linked to target with timer from +0x68
+0x0606822c func fx_SpawnHitSpark hand switch on hit type spawns hit spark effect struct with position midpoint, size by damage, sound ids
+0x0606860c func dbg_DrawBoxListFront hand projects box corners from 0x14-byte hitbox entries to screen, submits one quad polygon per box
+0x06068840 func dbg_DrawBoxListFull hand projects each hitbox into three faces, submits three quads per box via polygon submit
+0x060692ac func input_AdvanceComboStep hand checks pad history masks vs combo table entry type 0-5,0x40, advances step or resets sequence
+0x0606948c func proj_DispatchMoveByType hand switch on projectile type byte 0-0x19 calling per-type movement handlers
+0x06069590 func obj_DispatchStateHandler hand if-chain dispatch on object state byte 2-0x43 to per-state handler functions
+0x060697d4 func proj_MoveWithAccel hand adds velocity to x, applies facing sign, accelerates both velocity components
+0x0606982e func proj_MoveFallToGround hand moves x by facing, accelerates y velocity, calls landing handler when below ground
+0x06069870 func proj_MoveUntilAnimEnd hand moves x by facing and accelerates, on anim end chooses one of two finish handlers
+0x060698d4 func proj_MoveUntilDone hand moves by facing and accelerates velocity, clears timer when done check returns nonzero
+0x0606993c func proj_MoveEmitTrail hand emits trail effect when ready, moves by facing, finishes on animation end or hit flag
+0x06069a08 func proj_MoveEmitTrailSpeed hand emits trail once, moves by speed field +0x88 with facing, finishes on anim end
+0x06069aba func proj_ArcLandSpawnImpact hand moves with gravity, on ground contact snaps y, spawns impact effect, advances stage
+0x06069bae func proj_SteerByPadInput hand pad bits 0x80/0x40 pick target x speed from owner by facing, finishes at anim end
+0x06069c40 func proj_MoveUntilLand hand moves by facing with gravity, on ground chooses finish handler by projectile type
+0x06069ce2 func proj_MoveSwitchByPad hand moves, switches handler by pad bits 0x10/0x20/0x30 and type 0x28/0x2a/0x2c, else finishes
+0x06069dea func proj_DecelerateMove hand decelerates velocity to zero, moves with gravity, finishes on counter zero by facing
+0x06069eb2 func proj_DecelerateSetStateByPad hand sets state 0x6c-0x6e from pad, decelerates, moves with gravity, finishes at counter zero
+0x06069f90 func obj_PlayStateSound hand maps state byte (2,4,6,9...0x4c) to sound id and calls sound play function
+0x0606a06c func proj_BounceMoveByState hand moves with velocity and gravity, per-state landing branches for states 0x63-0x71, bounce halves velocity
+0x0606a33e func proj_MoveFallCounter hand moves with gravity and facing, increments counter, calls handler when counter over 6 or lands
+0x0606a426 func proj_MoveFallCounterLong hand like proj_MoveFallCounter but handler called when counter over 8
+0x0606a51e func proj_FallBounceDrop hand lands, counts down timer with blink flag, when expired sets state 0x69 and resets fields
+0x0606a5f2 func proj_SetStateDropOnAnimEnd hand on anim end calls two reset functions, sets state 0x69 and clears fields
+0x0606a63a func proj_MoveAfterStart hand after start flag moves by facing with gravity, on ground picks one of two finish handlers
+0x0606a6ec func proj_MoveCountFrames hand moves by facing and velocity, counts frames, returns early until anim end or nine frames
+0x0606a74e func proj_MoveUntilAnimEndFinish hand moves by facing, on anim end picks finish handler by facing or chain handler
+0x0606a7c0 func proj_MoveUntilAnimEndState2 hand moves by facing; on anim end sets state field to 2
+0x0606a814 func proj_MoveToGroundRelease hand moves with gravity by facing, on ground snaps y and z then calls release function
+0x0606a882 func obj_SyncOwnerFacingSlot hand on anim end finishes, else maps slot value 0-4 to owner state 3,4,2,1,5
+0x0606a8f4 func obj_TickLifeTimer hand decrements timer (faster if flag), finishes when global flag set or timer negative
+0x0606a92c func obj_TickLifeTimerBlink hand increments counter, decrements life timer with blink advance, finishes when expired
+0x0606a99e func obj_WaitThenMoveDecel hand waits countdown then moves with gravity until velocity fades, finishes on anim end
+0x0606aa50 func obj_SetIdleStateA hand copies byte, calls two reset functions, sets state 0x10 and idle flags
+0x0606aa86 func obj_SetIdleStateB hand calls two reset functions, sets state 0x12 and flags
+0x0606aafc func obj_SetIdleStateC hand calls two reset functions, sets state 0x11 and flags
+0x0606abda func obj_SetMoveStateBySpeed hand sets state 0x1b, 0x1c or 0x1d by sign of speed, sets flags
+0x0606ac26 func obj_SetMoveStateFromOwnerVel hand provisional: copies owner velocity chosen by facing, sets state 0x1b/0x1c/0x1d by speed sign
+0x0606ad10 func obj_SetHurtStateSpawnDust hand copies ground y, if power over 10 spawns effect and sound 0x1c, sets state 0x1a
+0x0606addc func obj_SetStateLandA hand calls two reset functions, sets state 0x1b, anim flag, copies owner field
+0x0606ae14 func obj_SetStateAttack28 hand calls two reset functions, clears timer to -1, sets state 0x28
+0x0606ae42 func obj_SetStateAttack29 hand calls two reset functions, clears timer to -1, sets state 0x29
+0x0606ae70 func obj_SetStateAttack2A hand calls two reset functions, clears timer to -1, sets state 0x2a
+0x0606ae9e func obj_SetStateAttack2B hand calls two reset functions, clears timer to -1, sets state 0x2b
+0x0606aecc func obj_SetStateAttack2C hand calls two reset functions, clears timer to -1, sets state 0x2c, flag 1
+0x0606aefa func obj_SetStateAttack2D hand calls two reset functions, clears timer to -1, sets state 0x2d, flag 1
+0x0606af28 func obj_SetStateAttack3C hand calls reset function, clears timer to -1, sets state 0x3c
+0x0606af5c func obj_SetStateTableA1 hand provisional: three reset calls, sets state from constant, mode 2, flag 0, calls finish function
+0x0606af8e func obj_SetStateTableA2 hand provisional: three reset calls, sets state from constant, mode 2, flag 0, calls finish function
+0x0606afc0 func obj_SetStateTableA3 hand provisional: three reset calls, sets state from constant, mode 2, flag 0, calls finish function
+0x0606aff2 func obj_SetStateTableA4 hand provisional: three reset calls, sets state from constant, mode 2, flag 0, calls finish function
+0x0606b024 func obj_SetStateTableA5 hand provisional: three reset calls, sets state from constant, mode 2, flag 1, calls finish function
+0x0606b056 func obj_SetStateTableA6 hand provisional: three reset calls, sets state from constant, mode 2, flag 1, calls finish function
+0x0606b0a8 func obj_SetStateTableB1 hand provisional: three reset calls, sets state from constant, mode 2, flag 1, calls finish function
+0x0606b0da func obj_SetStateTableB2 hand provisional: three reset calls, sets state from constant, mode 2, flag 1, calls finish function
+0x0606b10c func obj_SetStateTableC1 hand provisional: reset call, sets state from constant, mode 5, flag 0
+0x0606b12e func obj_SetStateTableC2 hand provisional: reset call, sets state from constant, mode 5, flag 0
+0x0606b150 func obj_SetStateTableC3 hand provisional: reset call, sets state from constant, mode 5, flag 0
+0x0606b172 func obj_SetStateTableC4 hand provisional: reset call, sets state from constant, mode 5, flag 0
+0x0606b194 func obj_SetStateTableD1 hand provisional: two reset calls, sets state from constant, mode 2, flag 0
+0x0606b1bc func obj_SetStateKnockback60Left hand resets, state 0x60 mode 7, sets negative x speed from half byte field and fixed y speed
+0x0606b22c func obj_SetStateKnockback60Right hand resets, state 0x60 mode 7, sets positive x speed from half byte field and fixed y speed
+0x0606b272 func obj_SetStateKnockback60Still hand resets, clears field, sets state 0x60 mode 7 without speed
+0x0606b29e func obj_SetStateKnockback61Left hand resets, state 0x61 mode 7, sets negative x speed from half byte field and fixed y speed
+0x0606b2e6 func obj_SetStateKnockback61Right hand resets, state 0x61 mode 7, sets positive x speed from half byte field and fixed y speed
+0x0606b32c func obj_SetStateKnockback61Still hand resets, clears field, sets state 0x61 mode 7 without speed
+0x0606b370 func obj_SetStateKnockback62Left hand resets, state 0x62 mode 7 flag 1, sets negative x speed from half byte field
+0x0606b3ba func obj_SetStateKnockback62Right hand resets, state 0x62 mode 7 flag 1, sets positive x speed from half byte field
+0x0606b402 func chr_StartAction6d hand sets state 0x6d, action 8, clears velocity via c640/c662, vertical speed from height/2
+0x0606b450 func chr_StartAction6c hand sets state 0x6c, action 8, same pattern as 6d, clears attack and velocity
+0x0606b4b4 func chr_StartAction6e hand sets state 0x6e, action 8 subtype 1, velocity from height
+0x0606b504 func chr_RandomizeSpread hand stores two random values into character fields via rand helper
+0x0606b536 func chr_StartAction75 hand state 0x75 action 9, random-direction scatter velocity using trig helpers
+0x0606b604 func chr_StartKnockback64 hand state 0x64 action 9, random-angled backward velocity, special case for states 0x65/0x70
+0x0606b6ec func chr_StartKnockback64_Mirrored hand state 0x64 action 9, mirrored x velocity variant of knockback
+0x0606b7b6 func chr_StartAction69 hand clears attack, sets state 0x69 action 9
+0x0606b7d6 func chr_StartAction63 hand clears attack and velocity, state 0x63 action 9, fixed launch velocity
+0x0606b838 func chr_StartAction63_2 hand state 0x63 action 9 with different launch constants
+0x0606b876 func chr_StartKnockback6f hand state 0x6f action 9, random angle velocity
+0x0606b958 func chr_StartKnockback6f_Mirrored hand state 0x6f action 9, mirrored x velocity
+0x0606ba40 func chr_StartKnockdown6f_A hand state 0x6f action 10, random velocity, negative x
+0x0606badc func chr_StartKnockdown6f_A_Mirrored hand state 0x6f action 10, mirrored velocity
+0x0606bb94 func chr_StartKnockdown6f_B hand state 0x6f action 11, random velocity
+0x0606bc30 func chr_StartKnockdown6f_B_Mirrored hand state 0x6f action 11, mirrored velocity
+0x0606bcd2 func chr_StartAction73_Facing hand state 0x73 action 12, calls facing flip c67e
+0x0606bd18 func chr_StartLaunch66 hand state 0x66 action 9, launch velocity scaled by weight/mass field
+0x0606bdb0 func chr_StartLaunch71 hand state 0x71 action 9, mirrored launch scaled by field
+0x0606be5a func chr_StartLaunch67 hand state 0x67 action 9, launch velocity from helper and field
+0x0606bee0 func chr_StartLaunch68 hand state 0x68 action 9, positive variant of launch 67
+0x0606bf78 func chr_StartAction73_IfAlive hand if hp field nonnegative: state 0x73 action 2
+0x0606bfaa func chr_StartAction74_IfAlive hand if hp field nonnegative: state 0x74 action 13
+0x0606bfdc func chr_StartHitStun70 hand spawns hit effect when damage>10, state 0x70 action 14, halves speed
+0x0606c0c8 func chr_StartHitStun65 hand spawns hit effect when damage>10, state 0x65 action 15
+0x0606c1ae func chr_StartAction6b hand clears state, state 0x6b action 16
+0x0606c1d2 func chr_StartHitStun72 hand spawns hit effect when damage>10, state 0x72 action 17
+0x0606c53c func chr_StartAction09 hand state 9 action 0x17, timer from sine helper plus 0x3c
+0x0606c578 func chr_StartAction05 hand state 5 action 0x18, timer from helper plus 0x3c
+0x0606c5ae func chr_StartAction2e hand state 0x2e action 2
+0x0606c5d2 func chr_StartAction34 hand state 0x34 action 1
+0x0606c61c func chr_StartAction35 hand state 0x35 action 0x16
+0x0606c640 func chr_ClearAttackState hand zeroes attack/combo/hit fields of character struct
+0x0606c662 func chr_ClearVelocity hand zeroes six velocity/accel words of character
+0x0606c67e func chr_FlipFacingToVelocity hand sets facing sign from velocity when high word zero and speed low
+0x0606c6be func chr_UpdateGuardFlags hand pad bit 0x80 clears flag, bit 0x40 sets flag
+0x0606c6e2 func ai_CountSameTargetEnemies hand counts up to 32 active characters sharing target, excluding state 0x65
+0x0606c75e func ai_ChooseApproachOrAttack hand enemy AI picks move/attack choice from distances to target, random rolls
+0x0606cd4c func list_ClearPair hand zeroes two pointer words at offsets 8 and 0xc
+0x0606cd54 func struct_ClearPadState hand zeroes header word and byte/halfword fields of small struct
+0x0606cd8a func struct_ClearSmallRecord hand zeroes word, bytes and halfwords of small record
+0x0606cdac func struct_ClearPlayerRecord hand zeroes fields of 0x48-byte record, sets two halfwords to constant
+0x0606ce08 func struct_ClearBigRecord hand zeroes 0x5a-byte record words, bytes and halfwords
+0x0606cebe func sound_RegisterBanks hand calls loader five times with bank pointers and ids 1,2,3,4,6
+0x0606cef6 func input_UpdatePadHold hand countdown of pad repeat timers, copies previous pad words, clears when timer zero
+0x0606d30c func obj_WorldToScreenPos hand converts world coords plus offsets to screen shorts via divide helper, clamps minimum depth
+0x0606d41e func chr_CheckDamageAbsorb hand subtracts damage from gauge, returns 0 if absorbed else 1
+0x0606d47c func chr_ApplyScaledDamage hand reduces gauge by amount, scales by stat and random, calls chr_AddExperience
+0x0606d53c func chr_AddExperience hand adds exp, loops level threshold level^2*16, level-up spawns effect object and sound 0x30
+0x0606d6c2 func anim_AdvanceFrameCounter hand increments frame counter, wraps to next keyframe index at duration
+0x0606d732 func anim_LoadKeyframeFields hand reads keyframe record 12 bytes, copies flags and params into animator struct
+0x0606d7d6 func anim_ProcessSequenceFrame hand large per-frame sequence step: reads hitbox/attack records, copies attack params into character
+0x0606e134 func fx_SpawnHitSparkSlot_1 hand stores owner in 0x18-byte effect slot, random offsets with facing sign
+0x0606e38c func fx_SpawnHitSparkSlot_2 hand effect slot 0x14 stride, random position offsets with facing flip
+0x0606e54c func fx_SpawnHitSparkSlot_3 hand effect slot 0x14 stride, random position offsets, copy of slot_2 pattern
+0x0606e70c func fx_SpawnHitSparkSlot_4 hand effect slot 0x14 stride, random position offsets variant
+0x0606e8cc func fx_SpawnHitSparkSlot_5 hand effect slot 0x14 stride, random position offsets variant
+0x0606ea7c func ai_FindNearestEnemy hand scans 32 characters of other team, returns closest by summed axis distance
+0x0606eb68 func ai_FindNearestAlly hand scans 32 characters of same team, returns closest by summed axis distance
+0x0606ed46 func ai_PickRandomEnemy hand collects 32 characters of other team, picks random one
+0x0606edf8 func ai_PickRandomAlly hand collects 32 characters of same team, picks random one
+0x0606ef52 func chr_FaceTowardTarget hand sets facing and turn state by comparing x positions
+0x0606efac func ai_RollAgainstStat hand random roll compared with stat*4+stat, returns 0 or 1
+0x0606f00c func anim_IsFinalFrame hand returns 1 if frame index reached end count and loop flag set
+0x0606f02e func obj_UpdateOrbitOffset hand sets x/y offsets from sine/cosine of angle field, advances angle
+0x0606f0c0 func screen_StartShake hand plays sound 0x19/0x1a/0x1b by magnitude, sets shake amplitude and duration
+0x0606f336 func player_GetSlotRecordAddr hand loops slots 2 at a time, returns address by game mode 0/1/2 stride 0x40 or 0x33
+0x0606f3b8 func hud_UpdatePlayerSlotEntry hand updates 0x24-byte HUD slot: adds 10, copies fields, clamps random jitter values
+0x0606f488 func struct_CopySixBytes hand copies six bytes from one struct to another
+0x0606fa1c func fx_BuildRandomQuad provisional builds randomized quad vertices using sine/cosine style helpers
+0x0606fe02 func gfx_ProjectQuadCorners provisional projects four corner coords via divide helper into shorts
+0x0606ff08 func obj_SetupLinearMotion provisional computes velocity components toward target via helper, half-scaled vertical
+0x0606ff4a func stat_ScaleByBitField provisional selects 2-bit field by index, doubles or scales value
+0x06070008 func stat_ScaleByBitField_2 provisional selects 2-bit field by index, halves or scales value
+0x060700c0 func chr_ClearTrackedSpriteFlag provisional clears halfword in owner's animation table entry
+0x060700dc func obj_SpawnFromTemplate hand allocates object, inits sub-structs, copies position, speeds and attributes from template
+0x060701b4 func spell_Update_1 provisional sets hitbox, on expire plays sound 0x43 and spawns particles
+0x06070630 func spell_Update_2 provisional sets hitbox, on expire plays sound 0x43, spawns particles
+0x06070994 func spell_Update_3 provisional hitbox setup, sound 0x43, particle burst
+0x06070dbc func spell_Update_4 provisional hitbox setup, sound 0x43, loop spawning particles
+0x06071160 func spell_SpawnBurst provisional hitbox setup, random velocity particle spawn
+0x0607121c func spell_Update_5 provisional hitbox setup, sound 0x43, multi-particle loop
+0x060718a0 func spell_Update_6 provisional follows owner position, hitbox, sound 0x43, spawns particles
+0x06071e0c func spell_Update_7 provisional follows owner, hitbox, sound 0x43, particle loop
+0x06072254 func spell_Update_8 provisional hitbox, damages owner link, sound 0x43, particle loop
+0x06072890 func spell_Update_9 provisional follows owner, hitbox, reduces link field 0x40, sound 0x43
+0x06072da0 func spell_Update_10 provisional follows owner, hitbox, reduces link field 0x40, sound 0x43
+0x06073174 func spell_Update_11 provisional hitbox, sound 0x44, spawns projectile
+0x060736ac func spell_Update_12 provisional hitbox, link field minus 8, sound 0x44, spawn
+0x0607389c func spell_Update_13 provisional hitbox, link field minus 8, sound 0x44, spawn
+0x06073b00 func spell_Update_14 provisional hitbox setup, link field minus 8, sound 0x44, spawn
+0x06073e48 func spell_Update_15 provisional hitbox setup, link field minus 8, sound 0x44, spawn
+0x06074084 func spell_Update_16 provisional large spell update: hitbox, link field minus 4, particle spawn
+0x06074694 func spell_Update_17 provisional large spell update: hitbox, sound 0x43, particle loop
+0x0607562a func proj_UpdateBlinkMotion provisional toggles visibility every other frame, adds velocity to position
+0x060758e0 func status_ApplyEffectById provisional rejects duplicates in list of ids, switch on effect kind up to 0x1b
+0x06076264 func proj_UpdateLinearMotion provisional adds velocity and acceleration to position, mirrors by facing, ends on flag
+0x060762da func proj_UpdateTimedMotion provisional countdown timer, fades at <0x10, linear motion, ends at zero
+0x06076390 func proj_FollowOwnerPosition provisional copies owner position plus offset while owner active, else ends
+0x060763d8 func proj_FollowOwnerOrSpawnEffect provisional follows owner, otherwise spawns effect with attack params
+0x06076476 func proj_UpdateGravityMotion provisional moves with gravity, plays sound 0x24 and spawns effect on ground hit
+0x06076584 func proj_UpdateSimpleFall provisional adds velocity, ends when below ground height
+0x060765d8 func proj_UpdateHoming provisional distance to target via sqrt helper, steers velocity toward target
+0x06076762 func proj_UpdateTimedHoming provisional timer countdown plus homing toward target using sqrt helper
+0x0607690e func proj_UpdateTimedAnimSet provisional timer countdown, fade, sets animation frame values
+0x060769f4 func proj_UpdateWithOwnerAnim provisional copies anim field, mirrored move, ends when field negative
+0x06076a56 func proj_UpdateBounce provisional moves with facing, gravity, ends on ground contact when flag clear
+0x06076b38 func proj_OrbitAroundOwner provisional position from owner via trig helper and radius, ends on timer
+0x06078064 func fx_SpawnEffectObj_Type0 hand allocates object, inits substructs, copies position and facing, type 0
+0x06078132 func fx_SpawnEffectObj_Type1 hand allocates object, copies position and facing, type 1
+0x06078238 func fx_SpawnEffectObj_Type3 hand allocates object, copies position and facing, type 3
+0x06078334 func fx_SpawnEffectObj_Type3b hand allocates object with extra init call, type 3
+0x06078454 func fx_SpawnEffectRandom hand allocates object, random angle masked, angle from parent plus half
+0x060785d0 func fx_SpawnEffectStill hand allocates object at parent position, zero velocity
+0x06078694 func fx_SpawnEffectOffset hand allocates object at parent x plus offset, sets speed
+0x0607880c func fx_SpawnEffectAngled hand allocates object, copies position, velocity from angle via helper
+0x0607896c func fx_SpawnEffectFromRecord hand allocates object from effect record, x offset by computed value
+0x06078a78 func proj_CheckOutOfBounds hand ends if outside x range or below ground or flag set
+0x06078ab6 func proj_UpdateMotionBounded hand linear motion with facing, ends when out of bounds
+0x06078b5a func proj_UpdateTimedMotionBounded hand countdown, fade, motion, ends on timer
+0x06078c1e func proj_CopyOwnerPosition hand copies owner position and facing byte plus offsets
+0x06078c5a func proj_UpdateTimedSpawn provisional countdown, fade, motion and secondary spawn
+0x06078eac func proj_UpdateTimedTracking provisional countdown, fade, distance to target via helper, steering
+0x0607922a func proj_UpdateStateTimer provisional timer, saves and clears state byte, sets halfword
+0x060792bc func proj_UpdateAimedAtTarget provisional finds target, atan angle toward it, sin/cos velocity
+0x0607954c func proj_UpdateComplexMotion provisional timer, fade, motion, long branch logic
+0x06079a88 func proj_UpdateBouncingMotion provisional motion with facing, ends on ground or flag conditions
+0x06079c2c func proj_UpdateShrinking provisional motion with facing, shrinks two size halfwords by 2
+0x06079e68 func fx_SpawnHitEffectFromParent provisional if parent phase>1 sets attack params 0x46,0xc and calls spawner
+0x06079f06 func proj_UpdateAnimatedMotion provisional timer, fade, animation offset and motion
+0x0607a162 func proj_UpdateTimedClamp provisional clamps timer if flag set, countdown, fade, motion
+0x0607a2f4 func proj_UpdateTimedFacing provisional countdown, fade, facing-dependent angle, speed add
+0x0607a4b6 func proj_UpdateTimedMotionC provisional countdown, fade, motion with facing
+0x0607a8e6 func proj_UpdateAnimatedMotionB provisional countdown, fade, animation offset, extra calls
+0x0607ab82 func proj_UpdateLinkedToOwner provisional while owner active countdown and orbit by distance helper
+0x0607af3c func proj_UpdateRotating provisional countdown, rotation angle add, mirrored motion
+0x0607afa0 func proj_UpdateRotatingB provisional countdown, halfword add, mirrored motion
+0x0607b014 func proj_UpdateTimedMotionD provisional countdown, fade, motion with facing
+0x0607b10e func proj_UpdateTimedTrackingB provisional countdown, fade, distance to found target
+0x0607b34c func proj_UpdateAnimatedMotionC provisional timer, fade, animation offset and motion
+0x0607b5ea func proj_UpdateWithOwnerAnimB provisional sets frame 1, copies anim field, mirrored move
+0x0607bca0 func actor_StateUpdate_1 provisional phase machine: init clears state, gated by global flag
+0x0607bf2e func actor_StateUpdate_2 provisional phase machine: init clears state, advances phase
+0x0607d9c0 func actor_StateUpdate_3 provisional phase machine: init clears arrays in loop
+0x0607dc56 func actor_StateUpdate_4 provisional phase machine: init clears arrays in loop
+0x0607e96e func hud_ResetSlotStats hand zeros six stat bytes of player slot entry, tail-calls by sign
+0x0607ea2c func hud_SetSlotStatsDefault hand sets slot entry bytes to 8,6,4,4,6,10, tail-calls by sign
+0x0607eae6 func actor_StateUpdate_5 provisional phase machine reading owner, ends when owner inactive
+0x0607ef1a func chr_StartAction17 hand state 0x17 action 0x13, clears attack and velocity
+0x0607ef4c func chr_StartAction18 hand state 0x18 action 0x15, clears attack and velocity
+0x0607ef84 func fighterA_SetState_1 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0607efba func fighterA_SetState_2 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0607eff0 func fighterA_SetState_3 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0607f064 func fighterA_SetState_4 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0607f0ac func fighterA_SetState_5 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0607f0f6 func fighterA_SetState_6 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0607f14c func fxA_SpawnEffectBurst hand spawns about fourteen effect objects around fighter at fixed offsets; provisional
+0x0607f50c func fxA_SpawnStateEffect hand spawns effect when fighter state is 2, 0xa or 0x12; provisional
+0x0607f5a6 func fighterA_UpdateJumpFall hand applies velocity to position, gravity, lands on ground Y; provisional
+0x0607f624 func fighterA_SpecialMoveFx hand special move effects and child object spawn selected by sub-step 0 to 0xe; provisional
+0x0607fd10 func fighterA_MultiPhaseSpecial hand three-phase special move spawning projectile and screen effects; provisional
+0x06080250 func fighterA_RegisterSeqTables hand registers seven animation sequence tables for indexes 8 and 10 to 15
+0x0608029e func fighterA_InputToState hand maps pad input bits to attack or move state changes; provisional
+0x0608042e func fighterA_MatchSpecialInput hand matches directional plus button special move input; provisional
+0x06080594 func fighterA_MatchInputB hand matches button and direction input combination for state change; provisional
+0x06080606 func fighterA_MatchInputC hand matches longer attack input combination and starts state; provisional
+0x06080788 func fighterA_InputDispatch hand top-level per-frame input dispatcher calling input matchers; provisional
+0x060807e2 func fighterA_StateUpdateDispatch hand dispatches per-state update by state id then runs input dispatch
+0x06080870 func fighterA_HitReactionUpdate hand updates hit reaction state, knockback velocity and recovery; provisional
+0x06080c3c func aiA_ChooseAction hand CPU opponent action chooser from distance and height comparisons; provisional
+0x06081016 func fighterA_SetState_7 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06081048 func fighterA_SetState_8 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06081082 func fighterA_SetState_9 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060810ca func fighterA_SetState_10 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06081178 func fighterA_SetState_11 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060811aa func fighterA_SetState_12 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060811dc func fighterA_SetState_13 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608120a func fighterA_SetState_14 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06081250 func fighterA_SetState_15 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060812cc func fighterA_SetState_16 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06081304 func fighterA_SetState_17 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06081348 func fighterA_SetStateSimple_1 hand sets fighter state id and calls init helper; tiny setter; provisional
+0x0608136a func fighterA_SetStateSimple_2 hand sets fighter state id and calls init helper; tiny setter; provisional
+0x0608138c func fighterA_SetState_18 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060813c2 func fighterA_SetState_19 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06081420 func fighterA_SetState_20 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06081462 func fighterA_SetState_21 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060814a2 func fighterA_SetState_22 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060814dc func fighterA_SetState_23 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06081516 func fighterA_SetState_24 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608157c func fighterA_SetState_25 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608292c func fxB_SpawnSpecialEffects hand spawns special move effects and child objects; provisional
+0x06082c2a func fxB_SpawnChildObjects hand allocates and initialises child projectile objects; provisional
+0x06082e8c func fighterB_RegisterSeqTables hand registers animation sequence tables for indexes 8 and 10 to 0x15
+0x06082f0a func fighterB_InputToState hand maps pad input bits to attack or move state changes; provisional
+0x060830ca func fighterB_MatchSpecialInput hand matches special move input sequence; provisional
+0x06083320 func fighterB_MatchInputB hand matches button direction input combination; provisional
+0x060833d2 func fighterB_MatchInputC hand matches long attack input combination; provisional
+0x060836f8 func fighterB_MatchInputD hand matches simple button input and starts state; provisional
+0x060837c8 func fighterB_InputDispatch hand top-level per-frame input dispatcher calling input matchers; provisional
+0x06083900 func fighterB_HitReactionUpdate hand hit reaction handler with knockback and recovery; provisional
+0x060840b2 func fighterB_SetState_1 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060840e4 func fighterB_SetState_2 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06084152 func fighterB_SetState_3 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060841ae func fighterB_SetState_4 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06084200 func fighterB_SetState_5 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608423a func fighterB_SetState_6 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060842a2 func fighterB_SetState_7 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060842d4 func fighterB_SetState_8 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06084306 func fighterB_SetState_9 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06084374 func fighterB_SetState_10 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060843aa func fighterB_SetStateSimple_1 hand sets fighter state id and calls init helper; tiny setter; provisional
+0x060843cc func fighterB_SetState_11 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06084402 func fighterB_UpdateMoveA hand movement update applying velocity to position; provisional
+0x0608444c func fighterB_UpdateMoveB hand short movement update step; provisional
+0x06084498 func fighterB_UpdateJumpFall hand jump and fall movement with ground landing; provisional
+0x06084582 func fighterB_UpdateDash hand dash or slide movement update with friction; provisional
+0x060846d4 func fighterB_UpdateKnockback hand knockback movement update; provisional
+0x060847b0 func fighterB_MultiStepSpecial hand multi-step special move spawning effects per sub-step; provisional
+0x06084af4 func fxB_SpawnRadialBurst hand spawns radial burst of effect objects; provisional
+0x06084df0 func fighterC_RegisterSeqTables hand registers animation sequence tables for indexes 8, 10 to 12, 14, 15
+0x06084e36 func fighterC_InputToState hand maps pad input bits to attack or move state changes; provisional
+0x06084fe4 func fighterC_MatchSpecialInput hand matches special move input sequence; provisional
+0x0608523a func fighterC_MatchInputB hand matches button direction input combination; provisional
+0x060852c0 func fighterC_MatchInputC hand matches long attack input combination; provisional
+0x060854dc func fighterC_MatchInputD hand matches simple button input and starts state; provisional
+0x06085594 func fighterC_InputDispatch hand top-level per-frame input dispatcher calling input matchers; provisional
+0x060855fa func fighterC_StateUpdateDispatch hand dispatches update by state ids 0x1a 0x1b 0x1d 0x1e and others
+0x06085e86 func fighterC_SetState_1 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06085eb8 func fighterC_SetState_2 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06085f42 func fighterC_SetState_3 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06085f74 func fighterC_SetState_4 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06085fd4 func fighterC_SetState_5 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06086006 func fighterC_SetState_6 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06086038 func fighterC_SetStateSimple_1 hand sets fighter state id and calls init helper; tiny setter; provisional
+0x0608605a func fighterC_SetState_7 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06086082 func fighterC_SetState_8 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060860c8 func fighterC_SetState_9 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06086144 func fighterC_SetState_10 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608616c func fighterC_SetState_11 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060861b4 func fighterC_SetState_12 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060861fc func fighterC_SetState_13 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608623c func fighterC_SetState_14 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060862a8 func fighterC_SetState_15 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060862e8 func fighterC_SetState_16 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06086328 func fighterC_SetState_17 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06086362 func fighterC_SetState_18 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608835c func fxD_SpawnSpecialEffects hand spawns special move effects around fighter; provisional
+0x0608862e func fxD_SpawnChildObjects hand allocates and initialises child projectile objects; provisional
+0x060888a4 func fighterD_RegisterSeqTables hand registers animation sequence tables for indexes 8 to 0xb and 0xe to 0x13
+0x0608890a func fighterD_InputToState hand maps pad input bits to attack or move state changes; provisional
+0x06088ac2 func fighterD_MatchSpecialInput hand matches special move input sequence; provisional
+0x06088d1e func fighterD_MatchInputB hand matches button direction input combination; provisional
+0x06088dce func fighterD_MatchInputC hand matches long attack input combination; provisional
+0x060890e8 func fighterD_MatchInputD hand matches simple button input and starts state; provisional
+0x06089184 func fighterD_InputDispatch hand top-level per-frame input dispatcher calling input matchers; provisional
+0x06089328 func fighterD_HitReactionUpdate hand hit reaction handler with knockback and recovery; provisional
+0x0608949c func aiD_ChooseAction hand CPU opponent action chooser using distance and ground height checks; provisional
+0x0608992e func fighterE_SetState_1 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06089960 func fighterE_SetState_2 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608999a func fighterE_SetState_3 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x060899ce func fighterE_SetState_4 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06089a00 func fighterE_SetState_5 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x06089a46 func fighterE_UpdateFallA hand update: negative velocity enters state, else decrements timer; provisional
+0x06089b16 func fighterE_UpdateHomingMove hand homing movement toward target with distance math and velocity steering; provisional
+0x06089db8 func fighterE_CopyObjectData hand calls helper then copies eight bytes of object data; provisional
+0x06089dd2 func fighterE_InputToState hand checks pad bits and facing, switches to walk, jump, crouch states
+0x06089f4e func fighterE_AttackInputCheck hand checks pad direction plus attack buttons and starts attack state; provisional
+0x0608a0c8 func fighterE_AttackButtonSplit hand branches on button 1 or 4 with direction bit 0x20; provisional
+0x0608a13a func fighterE_CheckStateSetTrigger hand if flag is 1 starts state set by helper 060899ce
+0x0608a166 func fighterE_InputDispatch hand runs input handlers by control flag bits 1 4 2 8
+0x0608a1d8 func fighterE_StateUpdateDispatch hand dispatches update for states 0x1a and 0x1b then input dispatch
+0x0608a21e func fighterE_CheckStateRangeEnd hand checks state 0x60 to 0x62 and triggers state set; provisional
+0x0608a2b4 func aiE_StateMachine hand CPU controller state machine over modes 0 0x10 0x11 0x12 0x30; provisional
+0x0608a49c func aiE_ChooseApproachAction hand CPU action choice from distance to target and ground checks; provisional
+0x0608a764 func aiE_ChooseChaseAction hand CPU chase decision using distance and random mask; provisional
+0x0608a8ae func aiE_CheckRangeAndChoose hand if target near calls action chooser else sets idle; provisional
+0x0608a95a func fighterE_SetState_6 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608a98c func fighterE_SetState_7 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608aa22 func fighterE_SetState_8 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608aa98 func fighterE_SetState_9 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608aada func fighterE_SetState_10 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608ab1e func fighterE_SetState_11 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608ab62 func fighterE_SetStateSimple_1 hand sets fighter state id and calls init helper; tiny setter; provisional
+0x0608ab84 func fighterE_SetStateSimple_2 hand sets fighter state id and calls init helper; tiny setter; provisional
+0x0608aba6 func fighterE_SetState_12 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608ac20 func fighterE_SetState_13 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608ac5e func fighterE_SetState_14 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608ac8a func fighterE_SetState_15 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608acbc func fighterE_SetState_16 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608acee func fighterE_SetState_17 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608ad32 func fighterE_SetState_18 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608adac func fighterE_SetState_19 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608ade4 func fighterE_SetState_20 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608ae1c func fighterE_SetState_21 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608ae5a func fighterE_SetState_22 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608ae9a func fighterE_SetState_23 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608aefc func fighterE_SetState_24 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608af36 func fighterE_SetState_25 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608af70 func fighterE_SetState_26 hand sets fighter state id, clears phase, initialises animation sequence; provisional
+0x0608afaa func obj_TickTimerDispatchMode hand Decrements countdown at obj field, then calls per-mode handler 0-3 via sub-functions
+0x0608b028 func proj_UpdateBounceSpawn hand Moves projectile x by facing-signed speed, gravity on y, on ground landing advances state and spawns effect
+0x0608b110 func proj_UpdateFallLand hand Applies velocity and gravity, on reaching floor height increments state, fills spawn struct, calls effect spawner
+0x0608b208 func proj_UpdateFallHitCheck hand Moves with gravity; on hit flag calls handler, on floor contact calls landing callback
+0x0608b2b4 func proj_UpdateFallHitCheck_2 hand Gravity move variant; hit flag handler, extra callback when state bits set, landing callback
+0x0608b338 func proj_SpawnEffectOnFirstFrame hand If hit flag set ends object (state 7); else at frame 0 fills spawn struct and spawns effect
+0x0608b3a6 func proj_UpdateSpawnEffectState hand Hit flag ends object; in states 8-0x1f moves x and spawns effect at frame 0
+0x0608b46c func proj_UpdateSlideEarly hand Slides x with facing sign while state below 8; sets timer at state 7; hit flag calls end handler
+0x0608b4b4 func proj_UpdateDropAndSpawn hand In state 2 moves and drops to floor, advances state and spawns effect with copied position
+0x0608b59a func attackA_SpawnProjectile hand At state 0 frame 0 builds position struct and allocates projectile objects, sets states and velocities
+0x0608b972 func effect_SpawnAtObjectPos hand Allocates effect, copies owner x/y/z and facing frame into spawn struct, zeroes velocity fields
+0x0608ba7c func attackA_SpawnFanOfProjectiles hand At state 3 frame 0 spawns count of projectiles spread by sin/cos angle, state 7, per-owner level scaling
+0x0608bd7c func attackA_SpawnAimedProjectile hand State 3 frame under 0x40: spawns projectile aimed by angle sin/cos with flip mirroring
+0x0608bfa4 func attackA_SpawnProjectileBurst hand State 3 frame 0 allocates several projectile objects with angle offsets and links their sub-structs
+0x0608c354 func attackA_SetHitboxFrame hand State 3: writes hitbox rectangle coordinates from owner pos, facing and size fields into hitbox struct
+0x0608c680 func charA_RegisterMoveTable hand Calls init then registers eight move data tables with ids 8,9,0xc-0x11 via same register function
+0x0608c6d6 func charA_DispatchAttackInput hand Tests pad edge/hold bits (2,0x10,0x20) and calls matching attack start function
+0x0608c88c func charA_CheckSpecialInputSpawn hand On button mask allocates special-attack object when none active, initialises sub-structs and velocity
+0x0608caf0 func charA_CheckDirectionAttack hand Tests buttons 2,0x20 and direction bits 1,4 to start directional attack, returns 1 if started
+0x0608cb76 func charA_CheckSpecialCommands hand Checks buffered command flags per slot, starts corresponding special move and clears flag, returns started
+0x0608ce54 func charA_CheckButtonCommands hand Checks button bit 1 with command flags 0x26,0xa,0xe set; calls special starters and clears flags
+0x0608cf78 func charA_ProcessInputCommands hand If idle phase 0 tests input mask bits 1,4,0x10,2 and calls dispatcher/checkers in order
+0x0608cff4 func charA_SwitchActionState hand Switch on action id 0x1a-0x20+ calling per-action handler through pointer table
+0x0608d128 func charA_UpdateStateDispatch hand States 0x60-0x62 with hit bit call hook; then dispatches on action id 0x36 or other via pointers
+0x0608d29c func ai_ChooseAttackByDistance hand AI: computes dx,dy,dz abs distances to target and randomly picks attack action ids by range and random
+0x0608d89a func ai_EnterState13 hand Calls resets then sets state 0x17 and action 0x13, clears counter, sets timer fields
+0x0608d8cc func ai_EnterState15 hand Resets then sets state 0x18 and action 0x15, sets timer and speed fields
+0x0608d962 func ai_EnterState1a hand Resets, sets action 0x1a, clears counters, calls anim start
+0x0608d998 func ai_EnterState1b hand Resets, sets action 0x1b, clears counters, calls anim start
+0x0608da00 func ai_EnterState1c hand Resets, sets action 0x1c, copies timer from linked object field
+0x0608da3c func ai_EnterState1d hand Resets and sets action 0x1d, clears counter
+0x0608da5e func ai_EnterState1e hand Resets and sets action 0x1e with timer and velocity constants
+0x0608daa4 func ai_EnterState1e_2 hand Variant of action 0x1e with different timer and velocity constants
+0x0608daea func ai_EnterState02 hand Resets and sets action 2, clears counters
+0x0608db4c func ai_EnterState20IfDone hand If anim check returns 0, resets and sets action 0x20, clears counters
+0x0608db98 func ai_EnterState21 hand Resets and sets action 0x21, clears counters and frame
+0x0608dbc8 func ai_EnterState21_2 hand Variant of action 0x21 with different state byte
+0x0608dbf8 func ai_EnterState23IfDone hand If anim check with 0x20 returns 0, resets and sets action 0x23
+0x0608dc4c func ai_EnterIdleAfterAnim hand When anim check done, resets, sets action 0, calls helper and uses random to choose follow-up
+0x0608dce2 func ai_EnterState27IfDone hand When anim check with 0x40 done, resets and sets action 0x27, jumps to helper
+0x0608dd54 func ai_ChooseRecoveryAction hand After anim done, calls random-ish selector; result 1,2,else sets action 0x2a,0x29,0x28
+0x0608fa8c func attackC_SpawnShotProjectile hand State 2 early frame allocates projectile at owner, sets velocity, state and offsets, calls random
+0x0608fc64 func attackC_SpawnShotProjectile_2 hand Same shooter variant with frame threshold scaled by level shift 2
+0x0608fe38 func attackC_SpawnShotAtFrame0 hand At state 2 frame 0 allocates projectile, initialises sub-structs and sets owner link
+0x0608ffe0 func charB_RegisterMoveTable hand Init then registers seven move tables ids 8,0xa,0xb,0xe-0x11 via register function
+0x0609002e func charB_DispatchAttackInput hand Tests pad bits 2,0x10,0x20 and calls matching attack start function
+0x060901e0 func charB_CheckSpecialInputSpawn hand On button mask allocates special-attack object, sets sub-structs and velocity from fields
+0x0609043a func charB_CheckDirectionAttack hand Tests buttons and direction bits to start directional attack, returns 1 if started
+0x060904c0 func charB_CheckSpecialCommands hand Checks buffered command flags per slot, starts special move and clears flag
+0x06090764 func charB_CheckButtonCommands hand Button bit 1 or 4 with command flag set starts special and clears flag, returns 1
+0x060907c2 func charB_ProcessInputCommands hand If idle phase 0 and states 0x16/0x17, dispatches input checks in order like charA
+0x060909c4 func charB_UpdateStateDispatch hand States 0x60-0x62 with hit bit call hook; dispatches on action id 0x36 or other
+0x06090b38 func ai_ChooseAttackByDistance_2 hand Second-character AI choosing attack by dx,dy,dz distances and random, ids 0x24-0x26 special
+0x060910ec func proj_UpdateRandomScatter hand Integrates position and velocity, bounds check against screen, random velocity on floor hit, advances state
+0x06091254 func proj_SpawnTrailChild hand Bounds check; at state 3 frame 0 allocates child object copying position, facing, owner, plays sound 0x20
+0x06091382 func proj_UpdateBoundedFall hand Integrates motion with bounds, floor contact advances state, plays sound by angle index
+0x060914ba func obj_StateMachineInitUpdate hand Object init (phase 0 sets fields), then per-frame update phases 1-3 with random values and callback
+0x060917bc func list_PushCallbackEntry hand Writes callback label into next 16-byte list slot, advances list pointer, sets global to 0xffff
+0x06091a70 func gfx_SelectActiveBufferAndDraw hand Draws both of two buffer structs via callback, picks one by status bit 2 and draws its region
+0x06091ac0 func gfx_UpdateScrollRows hand provisional Computes clipped row range from short fields of struct and writes scroll data
+0x06091ba4 func vdp2_WriteMapCell hand Computes 32x32 page cell offset from x,y (bit 0x20 selects page) and stores 32-bit value into map VRAM
+0x06091bd4 func math_ShiftByMaskBits hand Left shifts value by 1,2,4,8,16 for each set bit 0-4 of mask
+0x06091c54 func math_FixedMulSinTable hand In-range index multiplies value by 16-bit table entry (high word), else falls back to DIVU divide
+0x06091c8c func math_FixedDivScaledDiff hand Calls DIVU 64/32 helper on scaled value, subtracts extra result register
+0x06091ca0 func math_MulTable16High hand Table lookup of short times value high 32 bits, else fallback to DIVU 64/32 helper
+0x06091cde func math_MulTable16Fixed hand Table lookup times value converted to 16.16, else fallback to DIVU 32/32 divide
+0x06091d44 func math_FixedDivScaled hand Scales both args by global and calls DIVU fixed divide helper
+0x06091d5c func math_FixedMul hand 16.16 multiply: 32x32 to 64-bit, takes bits 16-47
+0x06091d66 func math_MulHigh32 hand 32x32 multiply returning high 32 bits of product
+0x06091d72 func divu_Divide32 hand Writes divisor and dividend to DIVU registers, returns result register
+0x06091d7c func divu_Divide64 hand Writes divisor, high word and low word to DIVU registers, returns result
+0x06091d88 func divu_FixedDivide hand Sets divisor, sign-extended high and shifted low dividend to DIVU, returns 16.16 quotient

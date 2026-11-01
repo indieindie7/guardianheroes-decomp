@@ -1,0 +1,2 @@
+0x06060000 func sega_Main hand Sega logo screen: fade in, wait timer or START, fade out via 8-state loop, returns 1 if button pressed
+0x060601c4 func sega_TaskLogo hand Task copying logo graphics and palette, sets sprite fields centred at 0xa0,0x80 and animates it

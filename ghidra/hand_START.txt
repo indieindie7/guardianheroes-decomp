@@ -1,0 +1,8 @@
+0x06060000 func start_Main hand Loads BG_TIT.BIN, loads sprites, runs per-frame loop with start_SelectStep until done, returns result short
+0x06060100 func start_SelectStep hand State machine creating two cursor tasks and panel tasks, waits, then inits both players' stats from character table
+0x0606045c func start_TaskPlayerLabel hand Task drawing Player text label and shaded boxes via callees, fixed screen position
+0x06060522 func start_TaskCursor hand Per-player cursor task: pad moves selection over 5 slots skipping locked and partner's pick, START confirms
+0x06060760 func start_TaskPlayerPanel hand Task drawing per-player panel: name sprite, stat sprites, shaded frame boxes, text via callees
+0x06060a04 func start_LoadCharSprites hand Loads SP_CHR.BIN and copies five sprite blocks by offset table into work RAM
+0x06060b90 func start_SubStep hand Small state machine spawning list task, wait, then pad up/down/left/right scrolls index 0-0x1d, START ends, returns 1
+0x06060e54 func start_TaskNumberDisplay hand Task drawing two sprites and a number converted to digit string terminated -1

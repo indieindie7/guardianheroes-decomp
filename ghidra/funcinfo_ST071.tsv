@@ -1,0 +1,272 @@
+F 06098000 stg_InitStage USER_DEFINED 428
+F 06099f7a stg_UpdateStageScript USER_DEFINED 1022
+F 0609a416 stg_RunScriptStep USER_DEFINED 122
+F 0609a4b8 chr_C02Stub1 USER_DEFINED 14
+F 0609a4c6 chr_C02EndStep1 USER_DEFINED 50
+F 0609a4f8 chr_C02EndStep2 USER_DEFINED 58
+F 0609a532 chr_C02TurnStep1 USER_DEFINED 72
+F 0609a57a chr_C02EndStep3 USER_DEFINED 52
+F 0609a5ae chr_C02TurnStep2 USER_DEFINED 74
+F 0609a640 chr_C02TurnStep3 USER_DEFINED 74
+F 0609a68a chr_C02EndStep4 USER_DEFINED 52
+F 0609a6be chr_C02EndStep5 USER_DEFINED 52
+F 0609a6f2 chr_C02EndStep6 USER_DEFINED 46
+F 0609a720 chr_C02EndStep7 USER_DEFINED 46
+F 0609a784 chr_C02DamageStep1 USER_DEFINED 60
+F 0609a7c0 chr_C02EffectAttack1 USER_DEFINED 234
+F 0609a8d8 chr_C02Handler1 USER_DEFINED 92
+F 0609a93c chr_C02ResetRecordsMove1 USER_DEFINED 590
+F 0609abc4 chr_C02SpecialMove1 USER_DEFINED 960
+F 0609b03c chr_C02InitComboSound1 USER_DEFINED 78
+F 0609b08a chr_C02PickAttackState1 USER_DEFINED 332
+F 0609b23a chr_C02ChooseStateTableA1 USER_DEFINED 342
+C 0609a4c6
+C 0609a4c6
+C 0609a4f8
+C 0609a532
+F 0609b3b0 chr_C02ChooseStateTableC1 USER_DEFINED 134
+F 0609b45a chr_C02ChooseGroundAction1 USER_DEFINED 312
+C 0609a5ae
+C 0609a640
+C 0609a68a
+C 0609a6be
+C 0609a6f2
+C 0609a720
+C 0609a6f2
+C 0609a720
+C 0609a784
+C 0609a784
+F 0609b5bc chr_C02SelectAction1 USER_DEFINED 90
+C 0609b08a
+C 0609b45a
+C 0609b23a
+C 0609b3b0
+F 0609b616 chr_C02DispatchMove1 USER_DEFINED 94
+C 0609a7c0
+C 0609a8d8
+C 0609a93c
+C 0609abc4
+C 0609b5bc
+F 0609b680 en_UpdateKnockdownDispatch USER_DEFINED 84
+C 0609a57a
+F 0609b7e0 chr_C03AiThink1 USER_DEFINED 804
+F 0609bbb8 stg_SetObjTimerPair USER_DEFINED 14
+F 0609bbc6 chr_C06EndStep1 USER_DEFINED 54
+F 0609bbfc chr_C06EndStep2 USER_DEFINED 58
+F 0609bc36 chr_C06EndStep3 USER_DEFINED 50
+F 0609bc68 chr_C06EndStep4 USER_DEFINED 44
+F 0609bc94 chr_C06EndStep5 USER_DEFINED 44
+F 0609bcc0 vs_Fighter1EnterHoldState_5db0 USER_DEFINED 52
+F 0609bd20 vs_Fighter1EnterGuardState_5e10 USER_DEFINED 56
+F 0609bd58 vs_Fighter1EnterGuardState_5e48 USER_DEFINED 56
+F 0609bd90 vs_Fighter1EnterTurnState_5e80 USER_DEFINED 62
+F 0609bdce vs_Fighter1EnterActionState_5ebe USER_DEFINED 54
+F 0609be04 vs_Fighter1SetIdleVariant_5ef4 USER_DEFINED 62
+F 0609be78 vs_Fighter1SetIdleVariant_5f68 USER_DEFINED 54
+F 0609beae vs_Fighter1SetIdleVariant_5f9e USER_DEFINED 98
+F 0609bf10 vs_Fighter1SetIdleVariant_6000 USER_DEFINED 62
+F 0609bf4e vs_Fighter1AdvanceComboSound_603e USER_DEFINED 34
+F 0609bf70 vs_Fighter1SelectStateTable_6060 USER_DEFINED 326
+F 0609c0fc vs_Fighter1SelectStateTable_61ec USER_DEFINED 326
+C 0609bbc6
+C 0609bbc6
+C 0609bbfc
+C 0609bd20
+C 0609bd58
+C 0609bd90
+F 0609c288 en_PollAttackButtons USER_DEFINED 114
+F 0609c2fa vs_Fighter1StateHandler_63ea USER_DEFINED 70
+C 0609bdce
+C 0609bdce
+F 0609c360 vs_Fighter1StateHandler_6450 USER_DEFINED 184
+C 0609bc36
+C 0609bc68
+C 0609bc94
+C 0609bf70
+C 0609c2fa
+C 0609c0fc
+C 0609c288
+F 0609c42c vs_Fighter1DispatchMoveByType_651c USER_DEFINED 94
+C 0609be04
+C 0609be78
+C 0609beae
+C 0609bf10
+C 0609c360
+F 0609c48a vs_Fighter1UpdateStateTableD_657a USER_DEFINED 136
+C 0609bcc0
+F 0609ca48 vs_Fighter1AiDecideAction_6b38 USER_DEFINED 704
+F 0609cd80 vs_Fighter4ReturnStub_97f4 USER_DEFINED 14
+F 0609cd8e vs_Fighter5EnterActionState_9802 USER_DEFINED 50
+F 0609cdc0 vs_Fighter5EnterActionState_9834 USER_DEFINED 58
+F 0609cdfa vs_Fighter5EnterTurnState_986e USER_DEFINED 50
+F 0609ce2c vs_Fighter5EnterHoldState_98a0 USER_DEFINED 52
+F 0609ce60 vs_Fighter5EnterActionState_98d4 USER_DEFINED 50
+F 0609ce92 vs_Fighter5EnterActionState_9906 USER_DEFINED 50
+F 0609cefc vs_Fighter5EnterHitDamageState_9970 USER_DEFINED 76
+F 0609cf48 vs_Fighter5EnterHitDamageState_99bc USER_DEFINED 62
+F 0609cf86 vs_Fighter5UpdateComplexState_99fa USER_DEFINED 356
+F 0609d104 vs_Fighter5SetIdleVariant_9b78 USER_DEFINED 184
+F 0609d1fc vs_Fighter5UpdateComplexState_9c70 USER_DEFINED 482
+F 0609d44a vs_Fighter5UpdateComplexState_9ebe USER_DEFINED 328
+F 0609d5aa vs_Fighter5AdvanceComboSound_a01e USER_DEFINED 54
+F 0609d634 vs_Fighter5SelectStateTable_a0a8 USER_DEFINED 332
+F 0609d7aa vs_Fighter5SelectStateTable_a21e USER_DEFINED 272
+C 0609cd8e
+C 0609cd8e
+C 0609cdc0
+C 0609cdfa
+C 0609cdfa
+F 0609d8f0 vs_Fighter5SelectStateTable_a364 USER_DEFINED 94
+F 0609d94e vs_Fighter5StateHandler_a3c2 USER_DEFINED 226
+C 0609ce60
+C 0609ce60
+C 0609ce92
+C 0609ce92
+C 0609cefc
+C 0609cf48
+F 0609da52 vs_Fighter5StateHandler_a4c6 USER_DEFINED 94
+C 0609d634
+C 0609d94e
+C 0609d7aa
+C 0609d8f0
+F 0609dabe vs_Fighter5DispatchMoveByType_a532 USER_DEFINED 94
+C 0609cf86
+C 0609d104
+C 0609d1fc
+C 0609d44a
+C 0609da52
+F 0609db1c vs_Fighter5UpdateStateTableD_a590 USER_DEFINED 82
+C 0609ce2c
+F 0609dc98 vs_Fighter5AiDecideAction_a70c USER_DEFINED 716
+F 0609dfe0 vs_Fighter6ReturnStub_c9d4 USER_DEFINED 14
+F 0609dfee vs_Fighter7EnterHoldState_c9e2 USER_DEFINED 52
+F 0609e022 vs_Fighter7EnterTurnState_ca16 USER_DEFINED 50
+F 0609e054 vs_Fighter7EnterActionState_ca48 USER_DEFINED 34
+F 0609e076 vs_Fighter7EnterHitDamageState_ca6a USER_DEFINED 66
+F 0609e0b8 vs_Fighter7UpdateComplexState_caac USER_DEFINED 646
+F 0609e3d4 vs_Fighter7SetIdleVariant_cdc8 USER_DEFINED 1362
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+C 0609fbfc
+F 0609e962 vs_Fighter7StateHandler_d356 USER_DEFINED 244
+C 0609fbfc
+F 0609ea6c vs_Fighter7UpdateComplexState_d460 USER_DEFINED 1350
+F 0609f070 vs_Fighter7AdvanceComboSound_da64 USER_DEFINED 34
+F 0609f092 vs_Fighter7SelectStateTable_da86 USER_DEFINED 332
+F 0609f22e vs_Fighter7SelectStateTable_dc22 USER_DEFINED 252
+C 0609e022
+C 0609e022
+F 0609f34a vs_Fighter7SelectStateTable_dd3e USER_DEFINED 134
+C 0609e054
+C 0609e054
+F 0609f3f6 vs_Fighter7StateHandler_ddea USER_DEFINED 86
+C 0609e076
+C 0609e076
+F 0609f450 vs_Fighter7StateHandler_de44 USER_DEFINED 94
+C 0609f092
+C 0609f3f6
+C 0609f22e
+C 0609f34a
+F 0609f4c8 vs_Fighter7DispatchMoveByType_debc USER_DEFINED 98
+C 0609e0b8
+C 0609e3d4
+C 0609e962
+C 0609ea6c
+C 0609f450
+F 0609f52a vs_Fighter7UpdateStateTableD_df1e USER_DEFINED 94
+C 0609dfee
+F 0609f780 vs_Fighter7AiDecideAction_e174 USER_DEFINED 578
+F 0609fbfc en_SpawnEffectFromTemplate USER_DEFINED 192
+F 0609fcec en_SetCollisionBoxDefault USER_DEFINED 14
+F 0609fcfa en_StartSpecialState USER_DEFINED 50
+F 0609fd2c stg_ThunkExternalCall_fd2c USER_DEFINED 6
+F 0609fd50 en_UpdateGuardState USER_DEFINED 268
+F 0609fe8c en_TryTriggerSpecial USER_DEFINED 100
+C 0609fcfa
+C 0609fcfa
+F 0609fef4 en_UpdateInputState USER_DEFINED 54
+C 0609fd50
+C 0609fe8c
+F 0609ff2a en_UpdateIfActive USER_DEFINED 46
+C 0609fef4
+F 0609ff70 vs_Chr07_KnockbackDispatch1 USER_DEFINED 78
+F 060a040c en_SetTimerPairA USER_DEFINED 14
+F 060a041a vs_Chr08_EnterActionState1 USER_DEFINED 50
+F 060a044c vs_Chr08_EnterTurnGuardState1 USER_DEFINED 68
+F 060a0490 vs_Chr08_EnterTurnGuardState2 USER_DEFINED 68
+F 060a04d4 vs_Chr08_IdleStateUpdate1 USER_DEFINED 78
+F 060a0522 stg_ThunkExternalCall_0522 USER_DEFINED 6
+F 060a0560 en_UpdateGuardState_2 USER_DEFINED 268
+F 060a069c vs_Chr08_StateSelect1 USER_DEFINED 116
+C 060a041a
+C 060a041a
+C 060a0490
+C 060a044c
+F 060a0714 vs_Chr08_StateSelect2 USER_DEFINED 54
+C 060a0560
+C 060a069c
+F 060a074a vs_Chr08_MoveUpdate1 USER_DEFINED 58
+C 060a04d4
+C 060a0714
+F 060a0798 vs_Chr08_KnockbackDispatch1 USER_DEFINED 78
+F 060a0c34 en_SetCollisionBoxDefault_2 USER_DEFINED 14
+F 060a0c42 en_StartSpecialState_2 USER_DEFINED 50
+F 060a0c74 stg_ThunkExternalCall_0c74 USER_DEFINED 6
+F 060a0c98 en_UpdateGuardState_3 USER_DEFINED 268
+F 060a0dd4 en_TryTriggerSpecial_2 USER_DEFINED 100
+C 060a0c42
+C 060a0c42
+F 060a0e3c en_UpdateInputState_2 USER_DEFINED 54
+C 060a0c98
+C 060a0dd4
+F 060a0e72 en_UpdateIfActive_2 USER_DEFINED 46
+C 060a0e3c
+F 060a0eb8 vs_Chr09_KnockbackDispatch1 USER_DEFINED 78
+F 060a1354 vs_Chr10_Stub1 USER_DEFINED 14
+F 060a1362 vs_EnterDownedState USER_DEFINED 50
+F 060a1394 vs_EnterKnockedState USER_DEFINED 68
+F 060a13d8 vs_UpdateKnockedMotion USER_DEFINED 86
+F 060a142e stg_ThunkExternalCall_142e USER_DEFINED 6
+F 060a1464 en_UpdateGuardState_4 USER_DEFINED 268
+F 060a15a0 vs_CheckEnterDownedOrKnocked USER_DEFINED 98
+C 060a1362
+C 060a1362
+C 060a1394
+F 060a1606 vs_DispatchStateFlagsA USER_DEFINED 54
+C 060a1464
+C 060a15a0
+F 060a163c vs_UpdateProjectileMoveA USER_DEFINED 58
+C 060a13d8
+C 060a1606
+F 060a168c vs_DispatchHitKnockback USER_DEFINED 78
+F 060a1b28 en_SetCollisionBoxDefault_3 USER_DEFINED 14
+F 060a1b36 en_StartSpecialState_3 USER_DEFINED 50
+F 060a1b68 stg_ThunkExternalCall_1b68 USER_DEFINED 6
+F 060a1b8c en_UpdateGuardState_5 USER_DEFINED 268
+F 060a1cc8 en_TryTriggerSpecial_3 USER_DEFINED 100
+C 060a1b36
+C 060a1b36
+F 060a1d30 en_UpdateInputState_3 USER_DEFINED 54
+C 060a1b8c
+C 060a1cc8
+F 060a1d66 en_UpdateIfActive_3 USER_DEFINED 46
+C 060a1d30
+F 060a1dac vs_DispatchHitKnockbackB USER_DEFINED 78
+F 060a2248 stg_BadDataPadding USER_DEFINED 1

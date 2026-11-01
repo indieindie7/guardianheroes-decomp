@@ -1,0 +1,3 @@
+0x06060000 func test_Main hand Loads background, runs per-frame loop with test_MenuStep until done, stores selected entry in global, returns result
+0x0606015c func test_MenuStep hand State machine spawning 8 menu item tasks, waits, then up/down selects 0-7, START or button confirms, 7 is exit
+0x0606048e func test_TaskMenuItem hand Task drawing one test-menu item string sprite, plus highlight box when its index is selected

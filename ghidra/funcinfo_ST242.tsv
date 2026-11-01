@@ -1,0 +1,263 @@
+F 06098000 stg_InitStageAssets USER_DEFINED 256
+F 06099fec stg_PickSpawnEntryByIndex USER_DEFINED 1174
+C 0609a56e
+F 0609a560 chr_StateStub_8e20 USER_DEFINED 14
+F 0609a56e chr_ClearStateEnter_8e2e USER_DEFINED 44
+F 0609a59a chr_ClearStateEnter_8e5a USER_DEFINED 50
+F 0609a5cc chr_ClearStateEnter_8e8c USER_DEFINED 58
+F 0609a606 chr_ClearStateEnter_8ec6 USER_DEFINED 52
+F 0609a63a chr_GuardStateEnter_8efa USER_DEFINED 72
+F 0609a6bc chr_FlipFacingStateEnter_8f7c USER_DEFINED 74
+F 0609a706 chr_FlipFacingStateEnter_8fc6 USER_DEFINED 74
+F 0609a750 chr_ClearStateEnter_9010 USER_DEFINED 56
+F 0609a788 chr_ClearStateEnter_9048 USER_DEFINED 56
+F 0609a7c0 chr_ClearStateEnter_9080 USER_DEFINED 44
+F 0609a81c chr_ClearStateEnter_90dc USER_DEFINED 54
+F 0609a852 chr_ClearStateEnter_9112 USER_DEFINED 66
+F 0609a894 chr_DamageStateEnter_9154 USER_DEFINED 58
+F 0609a8ce chr_DamageStateEnter_918e USER_DEFINED 64
+F 0609a93c eft_RandomQuadObjState_91fc USER_DEFINED 634
+F 0609ac36 eft_SpawnEffectObjState_94f6 USER_DEFINED 234
+F 0609ad3c obj_HurtDustState_95fc USER_DEFINED 178
+F 0609ae18 eft_SpawnType3bLandState_96d8 USER_DEFINED 222
+F 0609af18 obj_IdleStateUpdate_97d8 USER_DEFINED 130
+F 0609af9a chr_StartActionState_985a USER_DEFINED 678
+F 0609b298 chr_DamageStateEnter_9b58 USER_DEFINED 2060
+F 0609bc30 chr_InitSoundBanksComboStep_a4f0 USER_DEFINED 102
+F 0609bc96 chr_AttackComboStateSelect_a556 USER_DEFINED 332
+F 0609be52 chr_AttackTableStateSelect_a712 USER_DEFINED 350
+C 0609a59a
+C 0609a59a
+C 0609a5cc
+C 0609a63a
+F 0609bffa chr_SpecialAttackStateSelect_a8ba USER_DEFINED 134
+F 0609c080 chr_StartActionState_a940 USER_DEFINED 450
+C 0609a81c
+C 0609a81c
+C 0609a750
+C 0609a750
+C 0609a6bc
+C 0609a852
+C 0609a852
+C 0609a788
+C 0609a788
+C 0609a7c0
+C 0609a7c0
+C 0609a706
+C 0609a894
+C 0609a8ce
+F 0609c292 chr_StateHandler_ab52 USER_DEFINED 218
+C 0609a81c
+C 0609a81c
+C 0609a750
+C 0609a750
+C 0609a788
+C 0609a788
+F 0609c3a8 chr_StateHandler_ac68 USER_DEFINED 102
+C 0609bc96
+C 0609c080
+C 0609c292
+C 0609be52
+C 0609bffa
+F 0609c40e eft_ProjectileMoveDispatch_acce USER_DEFINED 144
+C 0609a93c
+C 0609ac36
+C 0609ad3c
+C 0609ae18
+C 0609af18
+C 0609af9a
+C 0609b298
+C 0609c3a8
+F 0609c4b4 chr_StateTableDDispatch_ad74 USER_DEFINED 84
+C 0609a606
+F 0609c640 chr_AiRollFaceTarget_af00 USER_DEFINED 1266
+F 0609cc28 chr_StateStub_b4e8 USER_DEFINED 14
+F 0609cc36 chr_ClearStateEnter_b4f6 USER_DEFINED 50
+F 0609cc68 chr_ClearStateEnter_b528 USER_DEFINED 50
+F 0609cc9a chr_ClearStateEnter_b55a USER_DEFINED 52
+F 0609ccce chr_ClearStateEnter_b58e USER_DEFINED 44
+F 0609ccfa chr_GuardStateEnter_b5ba USER_DEFINED 68
+F 0609cd68 chr_GuardStateEnter_b628 USER_DEFINED 68
+F 0609cdac chr_GuardStateEnter_b66c USER_DEFINED 54
+F 0609cde2 en_StartAttackState1f USER_DEFINED 110
+F 0609ce50 en_StartAttackState20 USER_DEFINED 50
+F 0609ceac en_StartAttackState23 USER_DEFINED 64
+F 0609ceec en_StartAttackState24 USER_DEFINED 62
+F 0609cf2a en_StartActionState21 USER_DEFINED 48
+F 0609cf5a en_StartActionState22 USER_DEFINED 48
+F 0609cf8a en_StartActionState25 USER_DEFINED 44
+F 0609cfb6 en_StartActionState26 USER_DEFINED 44
+F 0609cffc chr_ClearStateEnter_b8bc USER_DEFINED 48
+F 0609d02c chr_ClearStateEnter_b8ec USER_DEFINED 50
+F 0609d05e chr_ClearStateEnter_b91e USER_DEFINED 50
+F 0609d090 chr_ClearStateEnter_b950 USER_DEFINED 50
+F 0609d0c2 chr_ClearStateEnter_b982 USER_DEFINED 50
+F 0609d0f4 chr_DamageStateEnter_b9b4 USER_DEFINED 58
+F 0609d14c en_StartActionState2aVelA USER_DEFINED 56
+F 0609d184 en_StartActionState2aVelB USER_DEFINED 54
+F 0609d1ba eft_RandomQuadObjState_ba7a USER_DEFINED 1286
+F 0609d79c en_UpdateStateStub USER_DEFINED 44
+F 0609d800 en_UpdateStateAttackA USER_DEFINED 440
+F 0609d9f4 eft_SpawnEffectObjState_c2b4 USER_DEFINED 1690
+F 0609e1a6 eft_RandomQuadObjState_ca66 USER_DEFINED 622
+F 0609e458 eft_SpawnEffectObjState_cd18 USER_DEFINED 380
+F 0609e61c en_UpdateStateAttackSpawn USER_DEFINED 732
+C 0609cf8a
+F 0609e990 en_UpdateStateSpawnShot USER_DEFINED 254
+F 0609eaa2 en_UpdateStateMoveSpawn USER_DEFINED 352
+F 0609ec70 en_UpdateStateMoveHit USER_DEFINED 524
+F 0609eec0 chr_DamageStateEnter_d780 USER_DEFINED 804
+C 0609cf8a
+F 0609f278 en_UpdateStateAimShot USER_DEFINED 474
+C 0609cf8a
+F 0609f4b8 en_UpdateStateInputWalk USER_DEFINED 570
+C 0609ceec
+C 0609ceac
+F 0609f73e en_UpdateStateKnockback USER_DEFINED 64
+C 0609cf8a
+F 0609f77e en_UpdateStateAttackB USER_DEFINED 554
+F 0609fa30 eft_SpawnType3bLandState_e2f0 USER_DEFINED 334
+F 0609fba4 obj_IdleStateUpdate_e464 USER_DEFINED 560
+F 0609fe30 eft_ScreenShakeState_e6f0 USER_DEFINED 326
+F 0609ffc0 en_RegisterAnimSlots USER_DEFINED 94
+F 060a001e charA_DispatchAttackInput USER_DEFINED 332
+F 060a01d4 en_CheckInputTransition USER_DEFINED 378
+C 0609cc36
+C 0609cc36
+C 0609cc68
+C 0609cdac
+C 0609ccfa
+C 0609cde2
+C 0609cd68
+C 0609cdac
+C 0609ce50
+C 0609cde2
+C 0609ce50
+C 0609ccce
+F 060a0370 en_CheckGuardOrAttackInput USER_DEFINED 134
+C 0609cf2a
+C 0609cf5a
+F 060a041c en_CheckSpecialInput USER_DEFINED 404
+C 0609cfb6
+C 0609d0f4
+C 0609cffc
+C 0609cffc
+C 0609d02c
+C 0609d02c
+C 0609d090
+C 0609d090
+C 0609d05e
+C 0609d05e
+C 0609d0c2
+C 0609d0c2
+F 060a05f8 en_CheckComboInputs USER_DEFINED 224
+C 0609d090
+C 0609d090
+C 0609d14c
+C 0609d0c2
+C 0609d0c2
+C 0609d184
+F 060a06f8 en_DispatchInputActions USER_DEFINED 102
+C 060a001e
+C 060a041c
+C 060a05f8
+C 060a01d4
+C 060a0370
+F 060a0762 eft_ProjectileMoveDispatch_f022 USER_DEFINED 472
+C 0609d1ba
+C 0609d79c
+C 0609d800
+C 0609d9f4
+C 0609e1a6
+C 0609e458
+C 0609e61c
+C 0609e990
+C 0609eaa2
+C 0609ec70
+C 0609eec0
+C 0609f278
+C 0609f4b8
+C 0609f73e
+C 0609f77e
+C 0609fa30
+C 0609fba4
+C 0609fe30
+C 060a06f8
+F 060a09cc chr_StateTableDDispatch_f28c USER_DEFINED 94
+C 0609cc9a
+F 060a0b80 en_UpdateStateLarge USER_DEFINED 1062
+F 060a1066 en_UpdateStateMedium USER_DEFINED 404
+F 060a1260 en_SetTimerPairB USER_DEFINED 14
+F 060a126e charC_StartState_1 USER_DEFINED 44
+F 060a129a charC_StartState_2 USER_DEFINED 50
+F 060a12cc charC_StartState_3 USER_DEFINED 50
+F 060a12fe charC_StartState_4 USER_DEFINED 50
+F 060a1330 charC_StartState_5 USER_DEFINED 52
+F 060a1364 charC_StartGuardState USER_DEFINED 48
+F 060a13bc charC_StartFlippedState_1 USER_DEFINED 68
+F 060a1400 charC_StartFlippedState_2 USER_DEFINED 68
+F 060a1444 charC_StartState_6 USER_DEFINED 56
+F 060a147c charC_StartState_7 USER_DEFINED 56
+F 060a14b4 charC_StartState_8 USER_DEFINED 110
+F 060a155a charC_StartState_9 USER_DEFINED 50
+F 060a158c charC_StartState_10 USER_DEFINED 60
+F 060a15c8 charC_StartState_11 USER_DEFINED 56
+F 060a162c charC_UpdateIntroState USER_DEFINED 634
+F 060a1926 charC_UpdateLandMove USER_DEFINED 96
+F 060a1986 charC_UpdateSpecialAttack_1 USER_DEFINED 620
+F 060a1c8c charC_UpdateSpecialAttack_2 USER_DEFINED 660
+F 060a1f94 charC_UpdateHurtMove USER_DEFINED 178
+F 060a2046 charC_UpdateHurtState_2 USER_DEFINED 198
+F 060a212a charC_UpdateHurtState_3 USER_DEFINED 74
+F 060a2190 charC_ReactToInput USER_DEFINED 148
+C 060a15c8
+F 060a2224 charC_UpdateMoveFx USER_DEFINED 160
+F 060a22e2 charC_RegisterMoveTable USER_DEFINED 70
+F 060a2328 charC_DispatchAttackInput USER_DEFINED 332
+F 060a24d6 charC_CheckSpecialCommands USER_DEFINED 346
+C 060a129a
+C 060a129a
+C 060a12fe
+C 060a1364
+F 060a2678 charC_CheckButtonCommands USER_DEFINED 186
+C 060a12cc
+C 060a12cc
+F 060a2732 charC_ProcessInputCommandsA USER_DEFINED 330
+C 060a14b4
+C 060a155a
+C 060a1444
+C 060a1444
+C 060a13bc
+C 060a158c
+C 060a147c
+C 060a147c
+C 060a1400
+F 060a28ce charC_ProcessInputCommandsB USER_DEFINED 246
+C 060a14b4
+C 060a155a
+C 060a1444
+C 060a1444
+C 060a158c
+C 060a147c
+C 060a147c
+F 060a29f2 charC_SwitchActionState USER_DEFINED 102
+C 060a2328
+C 060a2732
+C 060a28ce
+C 060a24d6
+C 060a2678
+F 060a2a68 charC_DispatchMoveByState USER_DEFINED 160
+C 060a162c
+C 060a1926
+C 060a1986
+C 060a1c8c
+C 060a1f94
+C 060a2046
+C 060a212a
+C 060a2190
+C 060a2224
+C 060a29f2
+F 060a2b1c en_UpdateKnockdownDispatch USER_DEFINED 84
+C 060a1330
+F 060a2c7c ai_ChooseAttackByDistance_3 USER_DEFINED 1104
+F 060a31c0 stg_BadDataTail USER_DEFINED 1

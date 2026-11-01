@@ -1,0 +1,27 @@
+0x06060000 func stub_06060000 hand Empty stub that only returns
+0x06060004 func ending_Main hand Switch on ending id 0-6 calling per-ending routines, flags shown endings in a table, final call after
+0x06060128 func ending_SpawnTextTaskA hand Allocates 0x30-byte task with entry label, clears done flag, stores param as text id
+0x06060152 func ending_SpawnTextTaskB hand Allocates 0x30-byte task with second entry label, clears done flag, stores param as text id
+0x060603a8 func ending_SetTextGlobalA hand Stores parameter into a text-system global
+0x060603ae func ending_SetTextGlobalB hand Stores parameter into a second text-system global
+0x060603b4 func ending_InitTextState hand Resets text system globals, offsets and counters in task struct, initialises two sprite sub-blocks
+0x060604b4 func ending_SetTextFlags hand ORs parameter with constant mask into text flags global
+0x06060514 func ending_GetTextValue hand Returns signed short from a text-system global
+0x06060c5c func ending_SetupCharSprite hand Fills glyph sprite fields from character index times 0x40 and tail-calls sprite output
+0x06060c84 func ending_SetupCharPair hand Fills two consecutive glyph sprite entries 0xe and 0xf and tail-calls sprite output
+0x06060cc0 func ending_DrawTextLine hand Draws text string glyph by glyph advancing x by 8, newline on negative code, optional cursor
+0x06060de0 func ending_DrawTextBlocks hand Draws multiple text blocks with layout chosen by byte 0x8c, highlights block matching selected index
+0x06060ef2 func ending_DrawTextSimple hand Draws plain glyph string from task offset, newline on -1, optional flag bit
+0x060610ac func ending_RunTextScene hand Per-frame loop of text scene, Start button skips, calls ending_TextSceneStep
+0x060611b4 func ending_TextSceneStep hand Large 0x33-state machine showing timed text pages via spawned tasks and delays, returns 1 at end
+0x060616b4 func ending_ScrollTextTask hand Scrolling task moves y by pad direction speed until text leaves screen then marks done
+0x06061838 func ending_RunEnd1 hand Loads END1_D.BIN, copies two graphics blocks and tables, per-frame loop with Start skip, calls ending_End1Step
+0x060619a8 func ending_End1Step hand State machine for ending 1 sequence: fades, spawns tasks, timed waits, ends with return 1
+0x06061d54 func ending_RunEnd2 hand Loads END2_D.BIN, copies three graphics blocks and seven tables, per-frame loop with Start skip
+0x06061f28 func ending_End2Step hand State machine for ending 2 sequence with fades, spawned tasks and delays, returns 1 at end
+0x060625e0 func ending_RunEnd3 hand Loads END3_D.BIN with char parameter stored, copies graphics and tables, per-frame loop with Start skip
+0x06062774 func ending_End3Step hand State machine for ending 3 sequence with fades, spawned tasks and delays, branch on flag, returns 1
+0x06062b84 func ending_RunEnd4 hand Loads END4_D.BIN, copies graphics and tables, per-frame loop with Start skip, calls ending_End4Step
+0x06062d14 func ending_End4Step hand State machine for ending 4 sequence with fades, spawned tasks and delays, returns 1 at end
+0x060630a8 func ending_RunEnd5 hand Loads END5_D.BIN with char parameter stored, copies graphics and tables, per-frame loop with Start skip
+0x06063234 func ending_End5Step hand State machine for ending 5 sequence with fades, spawned tasks and delays, returns 1 at end

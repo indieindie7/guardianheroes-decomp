@@ -1,0 +1,9 @@
+0x06060000 func bupchk_Main hand Backup RAM check: reads two device status via BIOS vectors, picks usable device, formats or shows prompt screens, returns result
+0x06060198 func bupchk_RunUnformatted hand Loads BG_ZUR.BIN, per-frame loop with bupchk_UnformattedStep, shown for unformatted backup device
+0x0606029c func bupchk_UnformattedStep hand Draws Please-style message boxes, waits for START through fade states, returns 1 when finished
+0x06060458 func bupchk_RunSelectDevice hand Loads BG_ZUR.BIN, per-frame loop with bupchk_SelectDeviceStep, returns chosen device index
+0x0606057e func bupchk_SelectDeviceStep hand Draws Which System/Cartridge memory prompt, d-pad toggles choice, START confirms, returns 1 when done
+0x060607f0 func bupchk_RunConfirmFormat hand Loads BG_ZUR.BIN, per-frame loop with bupchk_ConfirmFormatStep, returns yes/no result
+0x06060908 func bupchk_ConfirmFormatStep hand Draws format confirmation boxes, d-pad toggles yes/no, START confirms, fade out, returns 1 when done
+0x06060b9c func bupchk_RunMessage hand Loads BG_ZUR.BIN, per-frame loop with bupchk_MessageStep, shows plain message screen
+0x06060cba func bupchk_MessageStep hand Draws Please-style message boxes, waits START through fade states, returns 1 when finished

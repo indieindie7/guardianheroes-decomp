@@ -1,0 +1,102 @@
+0x06098000 func stg_InitStageAssets hand loads stage character, video and map files, sets up object tables
+0x06099aa0 func stg_RunStageScript hand provisional: large per-stage script/spawn logic
+0x0609a170 func chr_C02Stub1 hand provisional: tiny stub function
+0x0609a17e func chr_C02EndStep1 hand clears attack state and velocity
+0x0609a1b0 func chr_C02EndStep2 hand clears attack state and velocity
+0x0609a1ea func chr_C02TurnStep1 hand clears attack/velocity, flips facing to velocity
+0x0609a232 func chr_C02EndStep3 hand clears attack state and velocity
+0x0609a266 func chr_C02TurnStep2 hand clears attack/velocity, flips facing to velocity
+0x0609a2f8 func chr_C02TurnStep3 hand clears attack/velocity, flips facing to velocity
+0x0609a342 func chr_C02EndStep4 hand clears attack state and velocity
+0x0609a376 func chr_C02EndStep5 hand clears attack state and velocity
+0x0609a3aa func chr_C02EndStep6 hand clears attack state and velocity
+0x0609a3d8 func chr_C02EndStep7 hand clears attack state and velocity
+0x0609a43c func chr_C02DamageStep1 hand applies scaled damage, clears attack and velocity
+0x0609a478 func chr_C02EffectAttack1 hand provisional: spawns offset effect then sets idle state A
+0x0609a590 func chr_C02Handler1 hand provisional: unclassified handler
+0x0609a5f4 func chr_C02ResetRecordsMove1 hand provisional: clears player/pad records, sets idle state A
+0x0609a87c func chr_C02SpecialMove1 hand provisional: special move; clears records, starts action 09, spawns effects
+0x0609acf4 func chr_C02InitComboSound1 hand advances combo step, registers sound banks
+0x0609ad42 func chr_C02PickAttackState1 hand sets attack states 28/2A/2C or idle
+0x0609aef2 func chr_C02ChooseStateTableA1 hand selects state tables A/B, spawns hit spark
+0x0609b068 func chr_C02ChooseStateTableC1 hand selects state table C or attack 3C
+0x0609b112 func chr_C02ChooseGroundAction1 hand provisional: picks action 2e or local step handlers
+0x0609b274 func chr_C02SelectAction1 hand provisional: calls several local action choosers
+0x0609b2ce func chr_C02DispatchMove1 hand calls move handlers then projectile move dispatch
+0x0609b338 func en_UpdateKnockdownDispatch hand provisional: dispatches handler when action id 0x60-0x62 and flag set
+0x0609b498 func chr_C03AiThink1 hand AI decision routine; rolls stat and faces target
+0x0609b870 func vs_SetStateTableFieldsB hand stores word and short into object state fields
+0x0609b87e func vs_SetStateTableFieldsC hand variant storing alternate word constant
+0x0609b88c func vs_EnterStateClearMotion hand clears attack and velocity, sets state fields
+0x0609b8b8 func vs_UpdateDeathSpawnEffects hand camera lerp, spawns effects and child task records
+0x0609bba8 func vs_UpdateProjectileThenDeath hand projectile move dispatch then death update
+0x0609bbc0 func stg_NullHook hand empty function, immediate return
+0x0609bbc4 func vs_SetStateTableFieldsD hand stores word and short into object state fields
+0x0609bbd2 func vs_EnterStateClearMotionB hand clears attack and velocity, sets state fields
+0x0609bbfe func vs_SpawnRecordedActor hand spawns angled effect, allocates and clears player records
+0x0609be7a func vs_SetStateSavePosition hand sets state fields, saves position x/y to backup slots
+0x0609beb0 func vs_UpdateEffectSpawnLoop hand spawns random quads and effect objects, then actor spawn
+0x0609c0d4 func vs_RestorePositionCheckEnd hand restores saved position, enters state when flag and counter negative
+0x0609c134 func chr_StateStub_8e20 hand tiny state stub
+0x0609c142 func chr_ClearStateEnter_8e2e hand clears attack state and velocity
+0x0609c16e func chr_ClearStateEnter_8e5a hand clears attack state and velocity
+0x0609c1a0 func chr_ClearStateEnter_8e8c hand clears attack state and velocity
+0x0609c1da func chr_ClearStateEnter_8ec6 hand clears attack state and velocity
+0x0609c20e func chr_GuardStateEnter_8efa hand clears attack/velocity and updates guard flags
+0x0609c290 func chr_FlipFacingStateEnter_8f7c hand flips facing then clears attack and velocity
+0x0609c2da func chr_FlipFacingStateEnter_8fc6 hand flips facing then clears attack and velocity
+0x0609c324 func chr_ClearStateEnter_9010 hand clears attack state and velocity
+0x0609c35c func chr_ClearStateEnter_9048 hand clears attack state and velocity
+0x0609c394 func chr_ClearStateEnter_9080 hand clears attack state and velocity
+0x0609c3f0 func chr_ClearStateEnter_90dc hand clears attack state and velocity
+0x0609c426 func chr_ClearStateEnter_9112 hand clears attack state and velocity
+0x0609c468 func chr_DamageStateEnter_9154 hand applies scaled damage then clears state
+0x0609c4a2 func chr_DamageStateEnter_918e hand applies scaled damage then clears state
+0x0609c510 func eft_RandomQuadObjState_91fc hand object state building random quad effect
+0x0609c80a func eft_SpawnEffectObjState_94f6 hand object state spawning effect objects
+0x0609c910 func obj_HurtDustState_95fc hand object hurt/land state spawning dust
+0x0609c9ec func eft_SpawnType3bLandState_96d8 hand spawns type3b effect, land/hurt state
+0x0609caec func obj_IdleStateUpdate_97d8 hand object update returning to idle state
+0x0609cb6e func chr_StartActionState_985a hand starts character action state
+0x0609ce6c func chr_DamageStateEnter_9b58 hand applies scaled damage then clears state
+0x0609d804 func chr_InitSoundBanksComboStep_a4f0 hand registers sound banks and advances combo step
+0x0609d86a func chr_AttackComboStateSelect_a556 hand selects attack 2x states by input
+0x0609da26 func chr_AttackTableStateSelect_a712 hand selects table A/B states with hit spark
+0x0609dbce func chr_SpecialAttackStateSelect_a8ba hand selects attack 3C or table C states
+0x0609dc54 func chr_StartActionState_a940 hand starts character action state
+0x0609de66 func chr_StateHandler_ab52 hand provisional: character state handler, no named callees
+0x0609df7c func chr_StateHandler_ac68 hand provisional: character state handler, no named callees
+0x0609dfe2 func eft_ProjectileMoveDispatch_acce hand dispatches projectile movement by type
+0x0609e088 func chr_StateTableDDispatch_ad74 hand sets table D state and dispatches handler
+0x0609e7fc func chr_StateStub_fb20 hand tiny state stub
+0x0609e80a func chr_ClearStateEnter_fb2e hand clears attack state and velocity
+0x0609e83c func chr_ClearStateEnter_fb60 hand clears attack state and velocity
+0x0609e86e func chr_ClearStateEnter_fb92 hand clears attack state and velocity
+0x0609e8a0 func chr_ClearStateEnter_fbc4 hand clears attack state and velocity
+0x0609e8cc func chr_ClearStateEnter_fbf0 hand clears attack state and velocity
+0x0609e906 func chr_ClearStateEnter_fc2a hand clears attack state and velocity
+0x0609e964 func chr_ClearStateEnter_fc88 hand clears attack state and velocity
+0x0609e994 func chr_ClearStateEnter_fcb8 hand clears attack state and velocity
+0x0609e9c4 func chr_ClearStateEnter_fce8 hand clears attack state and velocity
+0x0609e9fa func chr_ClearStateEnter_fd1e hand clears attack state and velocity
+0x0609ea30 func chr_ClearStateEnter_fd54 hand clears attack state and velocity
+0x0609ea78 func chr_ClearStateEnter_fd9c hand clears attack state and velocity
+0x0609eaf0 func chr_StateHandler_fe14 hand provisional: character state handler, no named callees
+0x0609eb18 func obj_HurtDustState_fe3c hand object hurt/land state spawning dust
+0x0609eb3a func eft_SpawnEffectObjState_fe5e hand object state spawning effect objects
+0x0609ed5c func chr_StateHandler_0080 hand provisional: character state handler, no named callees
+0x0609ef78 func obj_IdleStateUpdate_029c hand object update returning to idle state
+0x0609f0d8 func obj_HurtDustState_03fc hand object hurt/land state spawning dust
+0x0609f184 func obj_HurtDustState_04a8 hand object hurt/land state spawning dust
+0x0609f4a0 func chr_InitSoundBanksComboStep_07c4 hand registers sound banks and advances combo step
+0x0609f4d6 func chr_AttackComboStateSelect_07fa hand selects attack 2x states by input
+0x0609f6bc func chr_AttackTableStateSelect_09e0 hand selects table A/B states with hit spark
+0x0609f7a4 func chr_SpecialAttackStateSelect_0ac8 hand selects attack 3C or table C states
+0x0609f84c func chr_StateHandler_0b70 hand provisional: character state handler, no named callees
+0x0609f900 func chr_StateHandler_0c24 hand provisional: character state handler, no named callees
+0x0609f95c func chr_StateHandler_0c80 hand provisional: character state handler, no named callees
+0x0609f9c2 func eft_ProjectileMoveDispatch_0ce6 hand dispatches projectile movement by type
+0x0609fa4a func chr_StateStub_0d6e hand tiny state stub
+0x0609fc28 func chr_AiRollFaceTarget_0f4c hand AI stat roll then face target
+0x0609ff26 func chr_AiRollFaceTarget_124a hand AI stat roll then face target
+0x060a0168 func stg_BadDataTail hand undecoded trailing bytes after last function

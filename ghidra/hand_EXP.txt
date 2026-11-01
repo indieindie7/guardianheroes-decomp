@@ -1,0 +1,21 @@
+0x06060000 func exp_Main hand Loops exp_RunScreen then character-select step until result is 0 or -1, passing selected player byte
+0x06060040 func exp_RunScreen hand Inits VDP, loads background, per-frame loop calling exp_ScreenStep until done, returns result short
+0x0606016c func exp_ScreenStep hand State machine for stat-allocation screen: loads BG_SER/HAN/LAN/GIN/NIC.BIN per character, spawns 15 tasks, handles pad
+0x060608bc func exp_CheckStartPressed hand Checks pads 0 and 1 for START bit 8 with player slot unassigned, records which pad
+0x06060918 func exp_DrawTitleBoxes hand Task drawing two 0xc-type sprite boxes on first states, returns state
+0x06060a06 func exp_TaskPortraitA hand Task that sets sprite fields from character index table and draws one portrait sprite
+0x06060a56 func exp_TaskPortraitB hand Task like portrait A using byte-indexed table of character sprites, draws one sprite
+0x06060ad0 func exp_TaskStatLabelA hand Task drawing two sprites: label plus value digits from first stat byte, ends list with -1
+0x06060b70 func exp_TaskStatLabelB hand Task drawing label sprite plus value digits from player's stat, digit list terminated -1
+0x06060c28 func exp_TaskStatLabelC hand Task drawing label sprite plus digits from short at offset 6 of player struct
+0x06060cc8 func exp_TaskStatLabelD hand Task drawing label sprite plus digits from short at offset 10 of player struct
+0x06060d80 func exp_GetFreePoints hand Returns player level minus six allocated stat bytes: unspent stat points
+0x06060dc6 func exp_TaskPointsLeft hand Task drawing free points digits with two sprites, number via digit-conversion callee
+0x06060eae func exp_TaskCursorBox hand Task drawing two sprites and a highlight box when selection state is 2
+0x06060fd6 func exp_TaskStatRow hand Per-stat row task: pad left/right adds or removes point if free points, caps total 0x20, draws bar
+0x0606129e func exp_DrawStatBar hand Draws filled, allocated, base and empty stat-bar segments as polygons with ids 0x31-0x34
+0x06061424 func exp_ClampStatTotals hand Clamps six stats so base plus bonus plus allocated never exceeds 0x20, returns 0x1a
+0x060614f0 func exp_RunSelect hand Loads BG_TIT.BIN, copies SP_CHR, runs per-frame loop with exp_SelectStep until done, returns result short
+0x060615f8 func exp_SelectStep hand State machine creating 2 cursor and 2 panel tasks, waits, then initialises both players' stats from char tables
+0x06061ca6 func exp_TaskPlayerPanel hand Task drawing per-player panel: name sprite, stat sprites, shaded frame boxes, text via callees
+0x06061f64 func exp_LoadCharSprites hand Loads SP_CHR.BIN and copies five sprite blocks by offset table into work RAM

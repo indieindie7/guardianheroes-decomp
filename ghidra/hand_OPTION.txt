@@ -1,0 +1,23 @@
+0x06060000 func option_Main hand Loads BG_TIT.BIN, runs option main menu loop, dispatches to submenu functions by selection, returns -1/0/1
+0x060600f0 func option_RunMainMenu hand Per-frame loop for main option menu: init, vblank wait, calls option_MainMenuStep until done, returns selection
+0x06060188 func option_MainMenuStep hand State machine creating 6 menu item tasks, reading pad up/down/confirm/cancel, moves cursor, skips item 4 conditionally
+0x060605ba func option_MainMenuItemTask hand Menu item task: places label string from table, draws highlight rectangle when cursor equals item index
+0x060606b0 func option_RunGameSettingsMenu hand Per-frame loop for settings menu, calls option_GameSettingsMenuStep until done, returns result
+0x0606074e func option_GameSettingsMenuStep hand State machine creating 11 settings item tasks, cursor 0-10 skipping rows by mode value, pad input
+0x06061754 func option_RunSoundMenu hand Per-frame loop for 9-row menu with extra setup/teardown call using a mode value, calls option_SoundMenuStep
+0x060617fe func option_SoundMenuStep hand State machine creating 8 paired item tasks plus cursor task, cursor 0-8, confirm on last row exits
+0x06061f48 func option_SixRowMenuStep hand provisional State machine creating 6 item tasks at y 0x40+0x10 steps, cursor 0-5, last row confirms and exits
+0x06062598 func option_SoundTestBgmItemTask hand Item task selecting track 2-0x18 with left/right, plays or stops sound on buttons, draws cursor rectangle
+0x06062a82 func option_SoundTestSeItemTask hand provisional Item task for submenu state 4 selecting value 0-0x3f with left/right, button plays that sound
+0x06062c4a func option_SoundTestVoiceItemTask hand provisional Item task for submenu state 3 selecting value 0-0xe with left/right, button plays that sound
+0x06062dfe func option_SoundTestExitItemTask hand Item task for submenu state 5, shows exit label and highlight rectangle
+0x06062eb4 func option_RunSoundTest hand Takes char parameter as sound mode, per-frame loop calling option_SoundTestStep until done
+0x06062f58 func option_SoundTestStep hand State machine calling option_SoundTestCreateItems, waits until selector reaches 5, then fades out and returns 1
+0x06063078 func option_SoundTestCreateItems hand Creates grid of item tasks for sound test rows 3x2 groups, 16 value cells with wrapping, and three footer tasks
+0x060639f0 func option_IsPadUsedByOther hand Scans 6 slot table for entry with nonzero flag and matching id, returns 1 if slot differs from current
+0x060644b8 func option_RunExtrasMenu hand provisional Loops extras menu result; runs text screens including GUARDIAN title and string table pages via option_ShowMessageScreen
+0x0606453a func option_RunExtrasMenuLoop hand Per-frame loop calling option_ExtrasMenuStep, returns selected entry or -1
+0x060645d2 func option_ExtrasMenuStep hand State machine creating 3 item tasks, cursor 0-2 with pad up/down, confirm stores selection
+0x06064a7c func option_RunCharacterViewer hand Loads KAO_DATA.BIN, sets three table pointers from header offsets, loop calling option_CharacterViewerStep
+0x06064bc0 func option_CharacterViewerStep hand State machine with pad left/right +-1 and up/down +-8 wrapping character index 0-0x2f, skips locked entries
+0x06065338 func option_ShowMessageScreen hand Creates text task for given string, fades palette in, waits pad button, fades out, returns -1 on abort

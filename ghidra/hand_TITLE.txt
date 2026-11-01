@@ -1,0 +1,4 @@
+0x06060000 func title_Main hand Stores mode param, inits VDP2 and VDP1 tables, per-frame loop calling title_Step until done, returns result short
+0x06060144 func title_Step hand Title state machine: spawns logo and menu tasks, up/down moves 4-entry menu, START picks mode, fades and returns 1
+0x060605ba func title_TaskLogo hand Task copying logo graphics to VRAM, sets sprite fields and position (0x60 when mode 2), animates sprite
+0x0606091a func title_TaskPressStart hand Task drawing flashing PRESS START box at fixed position when blink flag is set

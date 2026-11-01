@@ -1,0 +1,4 @@
+0x06060000 func over_Main hand Game over screen: stores param, loads BG_KAN.BIN, runs per-frame loop with over_Step, optional fade, returns result
+0x06060120 func over_Step hand Game over state machine: spawns two tasks, fades, toggles yes/no choice with pad, START confirms, returns 1 at end
+0x0606034e func over_TaskContinuePrompt hand Task drawing continue prompt text, highlight box for selected choice, and a countdown digit sprite
+0x060604b8 func over_TaskGameOverText hand Task drawing GAME text sprite and a shaded box when selection state is 2

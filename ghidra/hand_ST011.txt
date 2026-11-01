@@ -1,0 +1,27 @@
+0x06098000 func stg_InitStageLoad hand loads stage CHR and VDP map files, sets palettes and installs stage handlers
+0x0609a3e2 func stg_UpdatePlayerSlotState hand provisional: per-player-slot state switch for entry and respawn handling
+0x0609ad0c func stg_SetObjTimerPair hand provisional: stores constant timer values into object fields
+0x0609ad1a func chr_C06EndStep1 hand clears attack state and velocity
+0x0609ad50 func chr_C06EndStep2 hand clears attack state and velocity
+0x0609ad8a func chr_C06EndStep3 hand clears attack state and velocity
+0x0609adbc func chr_C06EndStep4 hand clears attack state and velocity
+0x0609ade8 func chr_C06EndStep5 hand clears attack state and velocity
+0x0609ae14 func vs_Fighter1EnterHoldState_5db0 hand provisional: clears attack/velocity, copies field 0x78 to 0x80
+0x0609ae74 func vs_Fighter1EnterGuardState_5e10 hand provisional: flips facing, clears motion, updates guard flags
+0x0609aeac func vs_Fighter1EnterGuardState_5e48 hand provisional: flips facing, clears motion, updates guard flags
+0x0609aee4 func vs_Fighter1EnterTurnState_5e80 hand provisional: flips facing, clears attack and velocity
+0x0609af22 func vs_Fighter1EnterActionState_5ebe hand provisional: clears attack and velocity, sets state byte
+0x0609af58 func vs_Fighter1SetIdleVariant_5ef4 hand provisional: wraps idle state setter with field init
+0x0609afcc func vs_Fighter1SetIdleVariant_5f68 hand provisional: wraps idle state setter with field init
+0x0609b002 func vs_Fighter1SetIdleVariant_5f9e hand provisional: wraps idle state setter with field init
+0x0609b064 func vs_Fighter1SetIdleVariant_6000 hand provisional: wraps idle state setter with field init
+0x0609b0a2 func vs_Fighter1AdvanceComboSound_603e hand provisional: registers sound banks, advances combo step
+0x0609b0c4 func vs_Fighter1SelectStateTable_6060 hand provisional: chooses state from table by input
+0x0609b250 func vs_Fighter1SelectStateTable_61ec hand provisional: chooses state from table by input
+0x0609b3dc func en_PollAttackButtons hand tests pad bits and calls attack handlers by facing flag
+0x0609b44e func vs_Fighter1StateHandler_63ea hand provisional: calls sibling handlers; role inferred from call pattern
+0x0609b4b4 func vs_Fighter1StateHandler_6450 hand provisional: calls sibling handlers; role inferred from call pattern
+0x0609b580 func vs_Fighter1DispatchMoveByType_651c hand provisional: selects idle or move handlers, dispatches by type
+0x0609b5de func vs_Fighter1UpdateStateTableD_657a hand provisional: sets table D state, dispatches handler
+0x0609bb9c func vs_Fighter1AiDecideAction_6b38 hand provisional: rolls random vs stat to pick next action
+0x0609bed4 func sys_HaltBadData hand overlay end padding calls halt_baddata
